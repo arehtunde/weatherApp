@@ -14,8 +14,8 @@ const cssnano = require('cssnano');
 
 const files = {
   htmlPath: './*.html',
-  scssPath: 'app/scss/new.scss',
-  jsPath: 'app/js/new.js',
+  scssPath: 'app/scss/*.scss',
+  jsPath: 'app/js/*.js',
 };
 
 const htmlTask = async () => {
