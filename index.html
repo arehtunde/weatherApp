@@ -3,10 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="app/css/new.css">
+  <link rel="stylesheet" href="app/css/weather.css">
   <title>Document</title>
 </head>
 <body>
-  <script src="app/js/new.js"></script>
+  <header>
+    <div>
+      <a href="index.html">
+        <h1>Weather Forecast</h1>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li>Today</li>
+        <li>Hourly</li>
+        <li>Daily</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div>
+        <label>
+          Enter your Location
+          <input type="text" placeholder="Enter a location e.g ikeja Lagos, Nigeria">
+        </label>
+        <button type="submit">Get Weather Forecast</button>
+      </div>
+      <div>
+        <p>Detailed Weather Report</p>
+        <p>Realtime Hourly Data</p>
+        <p>Five Days Forecast</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ by Areh Tunde</p>
+    <div>
+      <a href="#"><span>Github</span></a>
+      <span>|</span>
+      <a href="#"><span>Twitter</span></a>
+    </div>
+  </footer>
+
+  <script src="app/js/weather.js"></script>
 </body>
 </html>
