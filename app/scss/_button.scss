@@ -1,0 +1,26 @@
+.btn {
+  display: block;
+  padding: $space-1;
+  margin: $space-2 auto;
+  border-radius: 5px;
+  background-color: $bg-color;
+  color: $txt-color;
+  font-family: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $txt-color;
+    color: $bg-color;
+  }
+
+  &:active {
+    border: 2px solid $bg-color;
+  }
+
+  &:focus {
+    outline: 2px solid $bg-color;
+    background-color: $txt-color;
+    color: $bg-color;
+  }
+}
