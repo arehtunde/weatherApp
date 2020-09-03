@@ -3,51 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,MONO@-15..0,400..900,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="app/css/weather.css">
   <title>Document</title>
 </head>
 <body>
-  <header>
-    <div>
-      <a href="index.html">
-        <h1>Weather Forecast</h1>
-      </a>
-    </div>
-    <nav>
-      <ul>
-        <li>Today</li>
-        <li>Hourly</li>
-        <li>Daily</li>
-      </ul>
-    </nav>
+  <header class="header">
+    <a href="index.html" class="header_link">
+      <h1>Weather Forecast</h1>
+    </a>
   </header>
 
-  <main>
-    <section>
-      <div>
-        <label>
-          Enter your Location
-          <input type="text" placeholder="Enter a location e.g ikeja Lagos, Nigeria">
-        </label>
-        <button type="submit">Get Weather Forecast</button>
-      </div>
-      <div>
+  <main class="main">
+    <section class="search">
+      <label for="search" class="search_label">Enter your Location</label>
+      <input type="text" class="search_input" id="search" placeholder="Enter a location e.g ikeja Lagos, Nigeria">
+      <button class="btn">Get Weather Forecast</button>
+    </section>
+    <section class="feature">
+      <div class="card">
+        <i class="fas fa-cloud-sun card_icon"></i>
         <p>Detailed Weather Report</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-hourglass-end card_icon"></i>
         <p>Realtime Hourly Data</p>
+      </div>
+      <div class="card">
+        <i class="far fa-clock card_icon"></i>
         <p>Five Days Forecast</p>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="foot">
     <p>Made with ❤️ by Areh Tunde</p>
     <div>
-      <a href="#"><span>Github</span></a>
+      <a href="#" class="foot_link"><span>Github</span></a>
       <span>|</span>
-      <a href="#"><span>Twitter</span></a>
+      <a href="#" class="foot_link"><span>Twitter</span></a>
     </div>
   </footer>
 
   <script src="app/js/weather.js"></script>
+  <script src="https://kit.fontawesome.com/8c64d9042a.js" crossorigin="anonymous"></script>
 </body>
 </html>

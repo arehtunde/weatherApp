@@ -1,0 +1,11 @@
+.foot {
+  margin: $space-2 ;
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  color: $bg-color;
+  text-align: center;
+
+  &_link {
+    text-decoration: none;
+    color: $bg-color;
+  }
+}
