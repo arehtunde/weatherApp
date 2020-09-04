@@ -11,11 +11,15 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "plugins": [
+        "import"
+    ],
     "parserOptions": {
         "ecmaVersion": 11
-    },
+    },   
     "rules": {
         "no-console": "off",
+        "import/extensions": "off",
         "arrow-body-style": ["error", "as-needed"]
     }
 }

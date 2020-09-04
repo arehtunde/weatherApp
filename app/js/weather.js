@@ -1,12 +1,4 @@
-// initialize error page
-const main = document.querySelector('.main');
-const errorInfo = document.createElement('div');
-main.append(errorInfo);
-
-const render = () => {
-  const feature = document.querySelector('.feature');
-  feature.style.display = 'none';
-};
+import { render, errorInfo } from './result.js';
 
 const getCoord = async () => {
   render();
@@ -43,7 +35,6 @@ const getCoord = async () => {
 
     // daily weather query parameters
     const dailyWeather = 'https://api.climacell.co/v3/weather/forecast/daily?';
-    // const dailyFields = fields.splice(0, 1);
     const removeItem = 'precipitation_type';
     const dailyFields = fields.filter((item) => item !== removeItem);
     const startDate = new Date();
@@ -70,4 +61,4 @@ const getCoord = async () => {
 };
 
 const button = document.querySelector('.btn');
-button.addEventListener('click', getCoord);
+button.addEventListener('click', render);

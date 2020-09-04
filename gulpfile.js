@@ -75,7 +75,7 @@ const sync = async () => {
     port: 8080,
     server: {
       baseDir: './',
-      index: 'index.html',
+      // index: 'index.html',
     },
   });
   watch(files.scssPath, series(compileCss, cssTask));
