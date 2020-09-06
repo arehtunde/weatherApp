@@ -1,0 +1,40 @@
+/* resultpage styling */
+
+@mixin flex() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin input() {
+  padding: $space-1;
+  font-family: inherit;
+  font-size: 1.4rem;
+}
+
+.header2 {
+  @include flex();
+}
+
+.page_title {
+  margin: $space-3 $space-2;
+}
+
+.query {
+  margin: $space-4 $space-2;
+  flex-basis: 80%;
+  @include flex();
+
+  &_input {
+    @include input();
+    width: 80%;
+    border-radius: 5px 0 0 5px;
+  }
+}
+
+.btn2 {
+  @include button();
+  padding: $space-1 $space-2;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
