@@ -13,69 +13,86 @@ body {
   width: 100%;
   height: 100vh;
   font-family: 'Recursive', monospace;
-}
-
-.header {
-  padding: 2rem;
-  border-bottom: 2px solid #011b33;
-  text-align: center;
-}
-
-.header_link {
-  text-decoration: none;
-  color: #011b33;
-}
-
-.main {
   font-size: clamp(1.6rem, 2.6vw, 2rem);
-  color: #011b33;
 }
 
-.search {
-  text-align: center;
+/* resultpage styling */
+.header2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.page_title {
+  margin: 1.5rem 1rem;
+}
+
+.query {
   margin: 2rem 1rem;
+  flex-basis: 80%;
+  display: flex;
+  flex-direction: row;
 }
 
-.search_label {
-  display: block;
-  margin: 1rem 0 0.5rem 0;
-}
-
-.search_input {
-  width: 90%;
+.query_input {
   padding: 0.5rem;
-  border: 2px solid #011b33;
-  border-radius: 5px;
   font-family: inherit;
   font-size: 1.4rem;
+  width: 80%;
+  border-radius: 5px 0 0 5px;
 }
 
-.feature {
-  margin: 1rem;
-  text-align: center;
-  border-top: 2px solid #011b33;
-  border-bottom: 2px solid #011b33;
-}
-
-.card {
-  padding: 1rem;
-}
-
-.card .card_icon {
-  font-size: 5rem;
-  margin: 0.5rem;
-}
-
-.btn {
-  display: block;
-  padding: 0.5rem;
-  margin: 1rem auto;
-  border-radius: 5px;
+.btn2 {
   background-color: #011b33;
   color: #fff;
   font-family: inherit;
   font-size: 1.4rem;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
+
+/* homepage styling */
+.header_link {
+  text-decoration: none;
+  color: #011b33;
+}
+
+.header_title {
+  padding: 2rem;
+  border-bottom: 2px solid #011b33;
+  text-align: center;
+}
+
+.search {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.search_label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.search_input {
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #011b33;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: block;
+  padding: 0.5rem;
+  margin: 1rem auto 0 auto;
+  border-radius: 5px;
 }
 
 .btn:hover {
@@ -93,9 +110,28 @@ body {
   color: #011b33;
 }
 
+.main {
+  color: #011b33;
+}
+
+.feature {
+  margin: 0 1rem;
+  text-align: center;
+  border-top: 2px solid #011b33;
+  border-bottom: 2px solid #011b33;
+}
+
+.card {
+  padding: 1rem;
+}
+
+.card .card_icon {
+  font-size: 5rem;
+  margin: 0.5rem;
+}
+
 .foot {
-  margin: 1rem;
-  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  padding: 1rem;
   color: #011b33;
   text-align: center;
 }

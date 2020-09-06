@@ -22,7 +22,7 @@ const getCoord = async () => {
     // current weather query parameters
     const key = 'vK6swCrrskXqnuZGn4NT7q7Aj1YuZINH';
     const currentWeather = 'https://api.climacell.co/v3/weather/realtime?';
-    const fields = ['precipitation', 'precipitation_type', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'wind_direction', 'wind_speed', 'weather_code'];
+    const fields = ['precipitation', 'precipitation_type', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'dewpoint', 'visibility', 'wind_direction', 'wind_speed', 'weather_code'];
     const currentWeatherUrl = `${currentWeather}lat=${coord.lat}&lon=${coord.lng}&fields=${fields}&apikey=${key}`;
 
     // hourly weather query parameter

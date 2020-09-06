@@ -1,5 +1,87 @@
 @import 'global';
-@import 'header';
-@import 'main';
-@import 'button';
-@import 'footer';
+@import 'result';
+
+/* homepage styling */
+
+.header {
+  &_link {
+    text-decoration: none;
+    color: $bg-color;
+  }
+
+  &_title {
+    padding: $space-4;
+    border-bottom: $bord;
+    text-align: center;
+  }
+}
+
+.search {
+  text-align: center;
+  padding: $space-4 $space-2;
+
+  &_label {
+    display: block;
+    margin-bottom: $space-1;
+  }
+
+  &_input {
+    @include input();
+    width: 90%;
+    border-radius: 5px;
+  }
+}
+
+.btn {
+  @include button();
+  display: block;
+  padding: $space-1;
+  margin: $space-2 auto 0 auto;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $txt-color;
+    color: $bg-color;
+  }
+
+  &:active {
+    border: $bord;
+  }
+
+  &:focus {
+    outline: $bord;
+    background-color: $txt-color;
+    color: $bg-color;
+  }
+}
+
+.main {
+  color: $bg-color;
+}
+
+.feature {
+  margin: 0 $space-2;
+  text-align: center;
+  border-top: $bord;
+  border-bottom: $bord;
+}
+
+.card {
+  padding: $space-2;
+
+  .card_icon {
+    font-size: 5rem;
+    margin: $space-1;
+  }
+}
+
+.foot {
+  padding: $space-2 ;
+  color: $bg-color;
+  text-align: center;
+
+  &_link {
+    text-decoration: none;
+    color: $bg-color;
+  }
+}
