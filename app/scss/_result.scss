@@ -13,6 +13,7 @@
 
 .header2 {
   @include flex();
+  border-bottom: 2px solid $bg-color;
 }
 
 .page_title {
@@ -37,4 +38,102 @@
   font-size: 1.6rem;
   border: none;
   border-radius: 0 5px 5px 0;
+}
+
+.currenttemp {
+  border: 2px solid red;
+  margin: $space-2;
+  padding: $space-2;
+  @include flex();
+
+  &_detail {
+    margin-right: auto;
+    font-weight: 650;
+  }
+}
+
+.location .value {
+  margin-left: $space-2;
+}
+
+.currenttemp_detail {
+  .temp {
+    font-size: clamp(3.5rem, 5vw, 5rem);
+  
+    &_unit {
+      font-size: clamp(1.6rem, 2.6vw, 2rem);
+    }
+  }
+}
+
+.currenttemp_description {
+  .descp {
+    text-align: center;
+  }
+}
+
+.currentweather {
+  border: 2px solid red;
+  margin: $space-2;
+  padding: $space-2;
+}
+
+.currentweather_detail {
+  margin-bottom: $space-2;
+}
+
+.feel {
+  font-weight: 650;
+  font-size: clamp(3.5rem, 5vw, 5rem);
+
+  &_unit {
+    font-size: clamp(1.6rem, 2.6vw, 2rem);
+  }
+}
+
+.currentdata {
+  list-style: none;
+  padding: 0 $space-2;
+
+  &_list {
+    display: flex;
+    .icon {
+      margin-right: $space-2;
+    }
+  
+    .prop {
+      margin-right: auto;
+    }
+  }
+}
+
+.air {
+  border: 2px solid red;
+  margin: $space-2;
+  padding: $space-2;
+}
+
+.air_detail {
+  display: flex;
+  margin: $space-2 0;
+}
+
+.airvalue {
+  border: 1px solid red;
+  flex-basis: 50%;
+  margin: 0 $space-4;
+  //border-radius: 50%;
+  text-align: center;
+}
+
+.hourly {
+  border: 2px solid red;
+  margin: $space-2;
+  padding: $space-2;
+}
+
+.daily {
+  border: 2px solid red;
+  margin: $space-2;
+  padding: $space-2;
 }
