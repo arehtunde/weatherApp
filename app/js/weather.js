@@ -1,4 +1,8 @@
-import { render, errorInfo } from './result.js';
+import { render } from './result.js';
+
+const main = document.querySelector('.main');
+const errorInfo = document.createElement('div');
+main.append(errorInfo);
 
 const getCoord = async () => {
   render();

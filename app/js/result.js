@@ -1,13 +1,6 @@
-// initialize error page
-const main = document.querySelector('.main');
-const errorInfo = document.createElement('div');
-main.append(errorInfo);
-
-const showResult = () => {
-  // set header
+const setHeader = () => {
   const header = document.querySelector('.header');
   header.classList.add('header2');
-  header.style.borderBottom = '2px solid #011b33';
 
   // set title
   const headerTitle = document.querySelector('.header_title');
@@ -32,50 +25,51 @@ const showResult = () => {
   button2.classList.add('btn2');
   button2.innerHTML = `
   <i class="fas fa-search-location"></i>`;
+};
 
+const setMain = () => {
   // create and append wrapper to main
+  const main = document.querySelector('.main');
   const wrapper = document.createElement('div');
   wrapper.classList.add('wrapper');
   main.append(wrapper);
 
   // create card for current temp
   const currentTemp = document.createElement('div');
-  currentTemp.classList.add('current_temp');
+  currentTemp.classList.add('currenttemp');
   wrapper.append(currentTemp);
   currentTemp.innerHTML = `
-    <div>
-      <p>Tue Jun 09 2020</p>
-      <p><i class="fas fa-map-marker-alt"></i><span>Chicago, IL</span></p>
-      <p>24C</p>
+    <div class="currenttemp_detail">
+      <p class="date">Tue Jun 09 2020</p>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span class="value">Chicago, IL</span></p>
+      <p class="temp"><span class="temp_value">24</span><sup class="temp_unit">°C</sup></p>
     </div>
-    <div>
-      <p>Cloudy</p>
-      <p>weather icon</p>
+    <div class="currenttemp_description">
+      <p class="descp">Cloudy</p>
+      <p class="icon">weather icon</p>
     </div>
   `;
 
   // create card for current weather
   const current = document.createElement('div');
-  current.classList.add('current_data');
+  current.classList.add('currentweather');
   wrapper.append(current);
   current.innerHTML = `
-    <div>
-      <div>
-        <h3>Current Weather in Chicago</h3>
-        <p>22C</p>
-        <span>Feels like</span>
-      </div>
-      <div>
-        <ul>
-          <li><span>het</span><span>wind</span><span>28C</span></li>
-          <li><span>het</span><span>wind</span><span>28C</span></li>
-          <li><span>het</span><span>wind</span><span>28C</span></li>
-          <li><span>het</span><span>wind</span><span>28C</span></li>
-          <li><span>het</span><span>wind</span><span>28C</span></li>
-          <li><span>het</span><span>wind</span><span>28C</span></li>
-          <li><span>het</span><span>wind</span><span>28C</span></li>
-        </ul>
-      </div>
+    <div class="currentweather_detail">
+      <h3 class="title">Current Weather in Chicago</h3>
+      <p class="feel"><span class="feel_value">24</span><sup class="feel_unit">°C</sup></p>
+      <span class="feel_text">Feels like</span>
+    </div>
+    <div class="currentweather_data">
+      <ul class="currentdata">
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">wind</span><span class="value">28C</span></li>
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">wind</span><span class="value">28C</span></li>
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">wind</span><span class="value">28C</span></li>
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">wind</span><span class="value">28C</span></li>
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">wind</span><span class="value">28C</span></li>
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">wind</span><span class="value">28C</span></li>
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">wind</span><span class="value">28C</span></li>
+      </ul>
     </div>
   `;
 
@@ -84,15 +78,15 @@ const showResult = () => {
   air.classList.add('air');
   wrapper.append(air);
   air.innerHTML = `
-    <h3>Air Quality Index</h3>
-    <div>
-      <div><p>34</p></div>
-      <div>
-        <h4>Good</h4>
-        <p>Air quality is considered satiisfactory and air pollution poses little or no risk</p>
+    <h3 class="air_title">Air Quality Index</h3>
+    <div class="air_detail">
+      <div class="airvalue">34</div>
+      <div class="airtext">
+        <h4 class="airtext_verdict">Good</h4>
+        <p class="airtext_expand">Air quality is considered satiisfactory and air pollution poses little or no risk</p>
       </div>
-      <button>See Details</button>
     </div>
+    <button>See Details</button>
   `;
 
   // create card for hourly weather
@@ -100,25 +94,23 @@ const showResult = () => {
   hourly.classList.add('hourly');
   wrapper.append(hourly);
   hourly.innerHTML = `
-    <div>
-      <div>
-        <span>100</span>
-        <span>100</span>
-        <span>100</span>
-        <span>100</span>
-      </div>
-      <div>
-        <span>100</span>
-        <span>100</span>
-        <span>100</span>
-        <span>100</span>
-      </div>
-      <div>
-        <span>100</span>
-        <span>100</span>
-        <span>100</span>
-        <span>100</span>
-      </div>
+    <div class="hourly_data">
+      <span class="time">100</span>
+      <span class="icon">100</span>
+      <span class="temp">100</span>
+      <span class="time">100</span>
+    </div>
+    <div class="hourly_data">
+      <span class="time">100</span>
+      <span class="icon">100</span>
+      <span class="temp">100</span>
+      <span class="time">100</span>
+    </div>
+    <div class="hourly_data">
+      <span class="time">100</span>
+      <span class="icon">100</span>
+      <span class="temp">100</span>
+      <span class="time">100</span>
     </div>
   `;
 
@@ -127,37 +119,36 @@ const showResult = () => {
   daily.classList.add('daily');
   wrapper.append(daily);
   daily.innerHTML = `
-  <div>
-    <div>
-      <span>100</span>
-      <span>100</span>
-      <span>100</span>
-      <span>100</span>
-    </div>
-    <div>
-      <span>100</span>
-      <span>100</span>
-      <span>100</span>
-      <span>100</span>
-    </div>
-    <div>
-      <span>100</span>
-      <span>100</span>
-      <span>100</span>
-      <span>100</span>
-    </div>
+  <div class="daily_data">
+    <span class="time">100</span>
+    <span class="icon">100</span>
+    <span class="temp">100</span>
+    <span class="time">100</span>
+  </div>
+  <div class="daily_data">
+    <span class="time">100</span>
+    <span class="icon">100</span>
+    <span class="temp">100</span>
+    <span class="time">100</span>
+  </div>
+  <div class="daily_data">
+    <span class="time">100</span>
+    <span class="icon">100</span>
+    <span class="temp">100</span>
+    <span class="time">100</span>
   </div>
 `;
 };
 
-const render = () => {
+export const render = () => {
   const label = document.querySelector('.search_label');
   const feature = document.querySelector('.feature');
   const button = document.querySelector('.btn');
   button.remove();
   feature.remove();
   label.remove();
-  showResult();
+  setMain();
+  setHeader();
 };
 
-export { render, errorInfo };
+export default render;

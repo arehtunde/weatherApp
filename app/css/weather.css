@@ -14,12 +14,14 @@ body {
   height: 100vh;
   font-family: 'Recursive', monospace;
   font-size: clamp(1.6rem, 2.6vw, 2rem);
+  line-height: 1.5;
 }
 
 /* resultpage styling */
 .header2 {
   display: flex;
   flex-direction: row;
+  border-bottom: 2px solid #011b33;
 }
 
 .page_title {
@@ -51,6 +53,101 @@ body {
   font-size: 1.6rem;
   border: none;
   border-radius: 0 5px 5px 0;
+}
+
+.currenttemp {
+  border: 2px solid red;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.currenttemp_detail {
+  margin-right: auto;
+  font-weight: 650;
+}
+
+.location .value {
+  margin-left: 1rem;
+}
+
+.currenttemp_detail .temp {
+  font-size: clamp(3.5rem, 5vw, 5rem);
+}
+
+.currenttemp_detail .temp_unit {
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+}
+
+.currenttemp_description .descp {
+  text-align: center;
+}
+
+.currentweather {
+  border: 2px solid red;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.currentweather_detail {
+  margin-bottom: 1rem;
+}
+
+.feel {
+  font-weight: 650;
+  font-size: clamp(3.5rem, 5vw, 5rem);
+}
+
+.feel_unit {
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+}
+
+.currentdata {
+  list-style: none;
+  padding: 0 1rem;
+}
+
+.currentdata_list {
+  display: flex;
+}
+
+.currentdata_list .icon {
+  margin-right: 1rem;
+}
+
+.currentdata_list .prop {
+  margin-right: auto;
+}
+
+.air {
+  border: 2px solid red;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.air_detail {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.airvalue {
+  border: 1px solid red;
+  flex-basis: 50%;
+  margin: 0 2rem;
+  text-align: center;
+}
+
+.hourly {
+  border: 2px solid red;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.daily {
+  border: 2px solid red;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 /* homepage styling */
