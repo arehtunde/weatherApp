@@ -144,10 +144,22 @@ body {
   padding: 1rem;
 }
 
+.hourly_data {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
 .daily {
   border: 2px solid red;
   margin: 1rem;
   padding: 1rem;
+}
+
+.daily_data {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* homepage styling */
@@ -228,9 +240,13 @@ body {
 }
 
 .foot {
-  padding: 1rem;
+  border-top: 2px solid red;
   color: #011b33;
   text-align: center;
+}
+
+.foot_text {
+  padding-top: 0.5rem;
 }
 
 .foot_link {

@@ -1,3 +1,9 @@
+// create and append wrapper to main
+const main = document.querySelector('.main');
+const wrapper = document.createElement('div');
+wrapper.classList.add('wrapper');
+main.append(wrapper);
+
 const setHeader = () => {
   const header = document.querySelector('.header');
   header.classList.add('header2');
@@ -27,13 +33,7 @@ const setHeader = () => {
   <i class="fas fa-search-location"></i>`;
 };
 
-const setMain = () => {
-  // create and append wrapper to main
-  const main = document.querySelector('.main');
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('wrapper');
-  main.append(wrapper);
-
+const setCurrentTemp = () => {
   // create card for current temp
   const currentTemp = document.createElement('div');
   currentTemp.classList.add('currenttemp');
@@ -49,7 +49,9 @@ const setMain = () => {
       <p class="icon">weather icon</p>
     </div>
   `;
+};
 
+const setCurrentWeather = () => {
   // create card for current weather
   const current = document.createElement('div');
   current.classList.add('currentweather');
@@ -72,7 +74,9 @@ const setMain = () => {
       </ul>
     </div>
   `;
+};
 
+const setAir = () => {
   // create card for air quality
   const air = document.createElement('div');
   air.classList.add('air');
@@ -88,55 +92,109 @@ const setMain = () => {
     </div>
     <button>See Details</button>
   `;
+};
 
+const setHourly = () => {
   // create card for hourly weather
   const hourly = document.createElement('div');
   hourly.classList.add('hourly');
   wrapper.append(hourly);
   hourly.innerHTML = `
     <div class="hourly_data">
-      <span class="time">100</span>
+      <span class="time">11pm</span>
       <span class="icon">100</span>
-      <span class="temp">100</span>
+      <span class="temp">68°C</span>
       <span class="time">100</span>
     </div>
     <div class="hourly_data">
-      <span class="time">100</span>
+      <span class="time">11pm</span>
       <span class="icon">100</span>
-      <span class="temp">100</span>
+      <span class="temp">68°C</span>
       <span class="time">100</span>
     </div>
     <div class="hourly_data">
-      <span class="time">100</span>
+      <span class="time">11pm</span>
       <span class="icon">100</span>
-      <span class="temp">100</span>
+      <span class="temp">68°C</span>
       <span class="time">100</span>
     </div>
+    <div class="hourly_data">
+      <span class="time">11pm</span>
+      <span class="icon">100</span>
+      <span class="temp">68°C</span>
+      <span class="time">100</span>
+    </div>
+    <div class="hourly_data">
+      <span class="time">11pm</span>
+      <span class="icon">100</span>
+      <span class="temp">68°C</span>
+      <span class="time">100</span>
+    </div>
+    <div class="hourly_data">
+      <span class="time">11pm</span>
+      <span class="icon">100</span>
+      <span class="temp">68°C</span>
+      <span class="time">100</span>
+    </div>
+    <div class="hourly_data">
+      <span class="time">11pm</span>
+      <span class="icon">100</span>
+      <span class="temp">68°C</span>
+      <span class="time">100</span>
+    </div>
+    <button>See More</button>
   `;
+};
 
+const setDaily = () => {
   // create card for daily weather
   const daily = document.createElement('div');
   daily.classList.add('daily');
   wrapper.append(daily);
   daily.innerHTML = `
   <div class="daily_data">
-    <span class="time">100</span>
+    <span class="day">Today</span>
     <span class="icon">100</span>
-    <span class="temp">100</span>
+    <span class="temp">10°C</span>
     <span class="time">100</span>
   </div>
   <div class="daily_data">
-    <span class="time">100</span>
+    <span class="day">Today</span>
     <span class="icon">100</span>
-    <span class="temp">100</span>
+    <span class="temp">10°C</span>
     <span class="time">100</span>
   </div>
   <div class="daily_data">
-    <span class="time">100</span>
+    <span class="day">Today</span>
     <span class="icon">100</span>
-    <span class="temp">100</span>
+    <span class="temp">10°C</span>
     <span class="time">100</span>
   </div>
+  <div class="daily_data">
+    <span class="day">Today</span>
+    <span class="icon">100</span>
+    <span class="temp">10°C</span>
+    <span class="time">100</span>
+  </div>
+  <div class="daily_data">
+    <span class="day">Today</span>
+    <span class="icon">100</span>
+    <span class="temp">10°C</span>
+    <span class="time">100</span>
+  </div>
+  <div class="daily_data">
+    <span class="day">Today</span>
+    <span class="icon">100</span>
+    <span class="temp">10°C</span>
+    <span class="time">100</span>
+  </div>
+  <div class="daily_data">
+    <span class="day">Today</span>
+    <span class="icon">100</span>
+    <span class="temp">10°C</span>
+    <span class="time">100</span>
+  </div>
+  <button>See More</button>
 `;
 };
 
@@ -147,8 +205,12 @@ export const render = () => {
   button.remove();
   feature.remove();
   label.remove();
-  setMain();
   setHeader();
+  setCurrentTemp();
+  setCurrentWeather();
+  setAir();
+  setHourly();
+  setDaily();
 };
 
 export default render;

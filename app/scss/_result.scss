@@ -132,8 +132,20 @@
   padding: $space-2;
 }
 
+.hourly_data {
+  padding: $space-1 0;
+  display: flex;
+  justify-content: space-between;
+} 
+
 .daily {
   border: 2px solid red;
   margin: $space-2;
   padding: $space-2;
+}
+
+.daily_data {
+  padding: $space-1 0;
+  display: flex;
+  justify-content: space-between;
 }

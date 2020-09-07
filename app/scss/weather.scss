@@ -76,9 +76,13 @@
 }
 
 .foot {
-  padding: $space-2 ;
+  border-top: 2px solid red;
   color: $bg-color;
   text-align: center;
+
+  &_text {
+    padding-top: $space-1;
+  }
 
   &_link {
     text-decoration: none;
