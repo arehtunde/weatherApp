@@ -33,25 +33,25 @@ const setHeader = () => {
   <i class="fas fa-search-location"></i>`;
 };
 
-const setCurrentTemp = () => {
+const setCurrentTemp = (currentData, location) => {
   // create card for current temp
   const currentTemp = document.createElement('div');
   currentTemp.classList.add('currenttemp');
   wrapper.append(currentTemp);
   currentTemp.innerHTML = `
     <div class="currenttemp_detail">
-      <p class="date">Tue Jun 09 2020</p>
-      <p class="location"><i class="fas fa-map-marker-alt"></i><span class="value">Chicago, IL</span></p>
-      <p class="temp"><span class="temp_value">24</span><sup class="temp_unit">°C</sup></p>
+      <p class="date">${Date(currentData.observation_time.value).substring(0, 15)}</p>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span class="value">${location.county}, ${location.state}</span></p>
+      <p class="temp"><span class="temp_value">${currentData.temp.value}</span><sup class="temp_unit">°C</sup></p>
     </div>
     <div class="currenttemp_description">
-      <p class="descp">Cloudy</p>
+      <p class="descp">${currentData.weather_code.value}</p>
       <p class="icon">weather icon</p>
     </div>
   `;
 };
 
-const setCurrentWeather = () => {
+const setCurrentWeather = (currentData, location) => {
   // create card for current weather
   const current = document.createElement('div');
   current.classList.add('currentweather');
@@ -198,7 +198,7 @@ const setDaily = () => {
 `;
 };
 
-export const render = () => {
+const render = () => {
   const label = document.querySelector('.search_label');
   const feature = document.querySelector('.feature');
   const button = document.querySelector('.btn');
@@ -206,11 +206,10 @@ export const render = () => {
   feature.remove();
   label.remove();
   setHeader();
-  setCurrentTemp();
   setCurrentWeather();
   setAir();
   setHourly();
   setDaily();
 };
 
-export default render;
+export { render, setCurrentTemp, setCurrentWeather };
