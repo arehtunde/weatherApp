@@ -1,11 +1,10 @@
-import { render } from './result.js';
+import { render, setCurrentTemp, setCurrentWeather } from './result.js';
 
 const main = document.querySelector('.main');
 const errorInfo = document.createElement('div');
 main.append(errorInfo);
 
 const getCoord = async () => {
-  render();
   // geocode query parameters
   const inputfield = document.querySelector('.search_input');
   const input = inputfield.value.trim();
@@ -22,6 +21,7 @@ const getCoord = async () => {
 
     // coordinates
     const coord = data.results[0].geometry;
+    const output = data.results[0].components;
 
     // current weather query parameters
     const key = 'vK6swCrrskXqnuZGn4NT7q7Aj1YuZINH';
@@ -39,8 +39,8 @@ const getCoord = async () => {
 
     // daily weather query parameters
     const dailyWeather = 'https://api.climacell.co/v3/weather/forecast/daily?';
-    const removeItem = 'precipitation_type';
-    const dailyFields = fields.filter((item) => item !== removeItem);
+    const removeItem = ['precipitation_type', 'dewpoint'];
+    const dailyFields = fields.filter((item) => !removeItem.includes(item));
     const startDate = new Date();
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + 6);
@@ -55,9 +55,10 @@ const getCoord = async () => {
     const [currentData, hourlyData, dailyData] = await Promise.all([
       currentResponse.json(), hourlyResponse.json(), dailyResponse.json(),
     ]);
-    console.log(currentData);
-    console.log(hourlyData);
-    console.log(dailyData);
+    console.log(currentData, output);
+    setCurrentTemp(currentData, output);
+    setCurrentWeather(currentData, output);
+    render();
   } catch (error) {
     errorInfo.innerHTML = `<h2>${input} Not Found!</h2>
     <p>Please Enter a valid city name</p>`;
@@ -65,4 +66,4 @@ const getCoord = async () => {
 };
 
 const button = document.querySelector('.btn');
-button.addEventListener('click', render);
+button.addEventListener('click', getCoord);
