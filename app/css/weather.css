@@ -105,19 +105,16 @@ body {
 
 .currentdata {
   list-style: none;
-  padding: 0 1rem;
 }
 
 .currentdata_list {
   display: flex;
-}
-
-.currentdata_list .icon {
-  margin-right: 1rem;
+  padding: 0.5rem 0;
+  font-weight: 650;
 }
 
 .currentdata_list .prop {
-  margin-right: auto;
+  margin: 0 auto 0 1rem;
 }
 
 .air {
