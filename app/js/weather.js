@@ -1,4 +1,6 @@
-import { render, setCurrentTemp, setCurrentWeather } from './result.js';
+import {
+  render, setCurrentTemp, setCurrentWeather, setHourly,
+} from './result.js';
 
 const main = document.querySelector('.main');
 const errorInfo = document.createElement('div');
@@ -22,11 +24,12 @@ const getCoord = async () => {
     // coordinates
     const coord = data.results[0].geometry;
     const output = data.results[0].components;
+    console.log(output);
 
     // current weather query parameters
     const key = 'vK6swCrrskXqnuZGn4NT7q7Aj1YuZINH';
     const currentWeather = 'https://api.climacell.co/v3/weather/realtime?';
-    const fields = ['precipitation', 'precipitation_type', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'dewpoint', 'visibility', 'wind_direction', 'wind_speed', 'weather_code'];
+    const fields = ['precipitation', 'precipitation_type', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'dewpoint', 'visibility', 'moon_phase', 'cloud_cover', 'wind_direction', 'wind_speed', 'weather_code'];
     const currentWeatherUrl = `${currentWeather}lat=${coord.lat}&lon=${coord.lng}&fields=${fields}&apikey=${key}`;
 
     // hourly weather query parameter
@@ -39,7 +42,7 @@ const getCoord = async () => {
 
     // daily weather query parameters
     const dailyWeather = 'https://api.climacell.co/v3/weather/forecast/daily?';
-    const removeItem = ['precipitation_type', 'dewpoint'];
+    const removeItem = ['precipitation_type', 'dewpoint', 'cloud_cover'];
     const dailyFields = fields.filter((item) => !removeItem.includes(item));
     const startDate = new Date();
     const endDate = new Date(startDate);
@@ -55,9 +58,11 @@ const getCoord = async () => {
     const [currentData, hourlyData, dailyData] = await Promise.all([
       currentResponse.json(), hourlyResponse.json(), dailyResponse.json(),
     ]);
-    console.log(currentData, output);
+    console.log(hourlyData);
+    console.log(dailyData);
     setCurrentTemp(currentData, output);
     setCurrentWeather(currentData, output);
+    setHourly(hourlyData);
     render();
   } catch (error) {
     errorInfo.innerHTML = `<h2>${input} Not Found!</h2>

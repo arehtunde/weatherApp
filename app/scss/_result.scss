@@ -93,16 +93,14 @@
 
 .currentdata {
   list-style: none;
-  padding: 0 $space-2;
 
   &_list {
     display: flex;
-    .icon {
-      margin-right: $space-2;
-    }
+    padding: $space-1 0;
+    font-weight: 650;
   
     .prop {
-      margin-right: auto;
+      margin: 0 auto 0 $space-2;
     }
   }
 }
