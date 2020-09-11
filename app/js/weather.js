@@ -1,5 +1,5 @@
 import {
-  render, setCurrentTemp, setCurrentWeather, setHourly,
+  render, setCurrentTemp, setCurrentWeather, setHourly, setDaily,
 } from './result.js';
 
 const main = document.querySelector('.main');
@@ -34,19 +34,18 @@ const getCoord = async () => {
 
     // hourly weather query parameter
     const hourlyWeather = 'https://api.climacell.co/v3/weather/forecast/hourly?';
-    const hourlyFields = [...fields, 'precipitation_probability'];
+    const hourlyFields = ['precipitation_probability', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'wind_speed', 'wind_direction', 'weather_code'];
     const startTime = new Date();
     const endTime = new Date(startTime);
-    endTime.setHours(endTime.getHours() + 6);
+    endTime.setHours(endTime.getHours() + 24);
     const hourlyWeatherUrl = `${hourlyWeather}lat=${coord.lat}&lon=${coord.lng}&start_time=now&end_time=${endTime.toISOString()}&fields=${hourlyFields}&apikey=${key}`;
 
     // daily weather query parameters
     const dailyWeather = 'https://api.climacell.co/v3/weather/forecast/daily?';
-    const removeItem = ['precipitation_type', 'dewpoint', 'cloud_cover'];
-    const dailyFields = fields.filter((item) => !removeItem.includes(item));
+    const dailyFields = ['precipitation_probability', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'wind_speed', 'wind_direction', 'sunrise', 'sunset', 'weather_code'];
     const startDate = new Date();
     const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + 6);
+    endDate.setDate(endDate.getDate() + 10);
     const dailyWeatherUrl = `${dailyWeather}lat=${coord.lat}&lon=${coord.lng}&start_time=now&end_time=${endDate.toISOString()}&fields=${dailyFields}&apikey=${key}`;
 
     const [currentResponse, hourlyResponse, dailyResponse] = await Promise.all([
@@ -63,6 +62,7 @@ const getCoord = async () => {
     setCurrentTemp(currentData, output);
     setCurrentWeather(currentData, output);
     setHourly(hourlyData);
+    setDaily(dailyData);
     render();
   } catch (error) {
     errorInfo.innerHTML = `<h2>${input} Not Found!</h2>

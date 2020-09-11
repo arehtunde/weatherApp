@@ -125,101 +125,98 @@ const setHourly = (hourlyData) => {
 
   // set content
   hourly.innerHTML = `
-    <div class="hourly_data">
-      <span class="time">${showTime(hourlyData[0].observation_time.value)}</span>
-      <span class="temp">${hourlyData[0].temp.value}</span>
-      <span class="icon">icon</span>
-      <span class="time">${hourlyData[0].precipitation_probability.value}</span>
+    <div class="hourly_holder">
+      <div class="hourly_data">
+        <span class="time">${showTime(hourlyData[0].observation_time.value)}</span>
+        <span class="temp">${hourlyData[0].temp.value}</span>
+        <span class="icon">icon</span>
+        <span class="precp">${hourlyData[0].precipitation_probability.value}</span>
+      </div>
+      <div class="hourly_data">
+        <span class="time">${showTime(hourlyData[1].observation_time.value)}</span>
+        <span class="temp">${hourlyData[1].temp.value}</span>
+        <span class="icon">100</span>
+        <span class="precp">${hourlyData[1].precipitation_probability.value}</span>
+      </div>
+      <div class="hourly_data">
+        <span class="time">${showTime(hourlyData[2].observation_time.value)}</span>
+        <span class="temp">${hourlyData[2].temp.value}</span>
+        <span class="icon">100</span>
+        <span class="precp">${hourlyData[2].precipitation_probability.value}</span>
+      </div>
+      <div class="hourly_data">
+        <span class="time">${showTime(hourlyData[3].observation_time.value)}</span>
+        <span class="temp">${hourlyData[3].temp.value}</span>
+        <span class="icon">100</span>
+        <span class="precp">${hourlyData[3].precipitation_probability.value}</span>
+      </div>
+      <div class="hourly_data">
+        <span class="time">${showTime(hourlyData[4].observation_time.value)}</span>
+        <span class="temp">${hourlyData[4].temp.value}</span>
+        <span class="icon">100</span>
+        <span class="precp">${hourlyData[4].precipitation_probability.value}</span>
+      </div>
     </div>
-    <div class="hourly_data">
-      <span class="time">${showTime(hourlyData[1].observation_time.value)}</span>
-      <span class="temp">${hourlyData[1].temp.value}</span>
-      <span class="icon">100</span>
-      <span class="time">${hourlyData[1].precipitation_probability.value}</span>
-    </div>
-    <div class="hourly_data">
-      <span class="time">${showTime(hourlyData[2].observation_time.value)}</span>
-      <span class="temp">${hourlyData[2].temp.value}</span>
-      <span class="icon">100</span>
-      <span class="time">${hourlyData[2].precipitation_probability.value}</span>
-    </div>
-    <div class="hourly_data">
-      <span class="time">${showTime(hourlyData[3].observation_time.value)}</span>
-      <span class="temp">${hourlyData[3].temp.value}</span>
-      <span class="icon">100</span>
-      <span class="time">${hourlyData[3].precipitation_probability.value}</span>
-    </div>
-    <div class="hourly_data">
-      <span class="time">${showTime(hourlyData[4].observation_time.value)}</span>
-      <span class="temp">${hourlyData[4].temp.value}</span>
-      <span class="icon">100</span>
-      <span class="time">${hourlyData[4].precipitation_probability.value}</span>
-    </div>
-    <div class="hourly_data">
-      <span class="time">${showTime(hourlyData[5].observation_time.value)}</span>
-      <span class="temp">${hourlyData[5].temp.value}</span>
-      <span class="icon">100</span>
-      <span class="time">${hourlyData[5].precipitation_probability.value}</span>
-    </div>
-    <div class="hourly_data">
-      <span class="time">${showTime(hourlyData[6].observation_time.value)}</span>
-      <span class="temp">${hourlyData[6].temp.value}</span>
-      <span class="icon">100</span>
-      <span class="time">${hourlyData[6].precipitation_probability.value}</span>
-    </div>
-    <button>See More</button>
+    <button>Next 24 Hours</button>
   `;
 };
 
-const setDaily = () => {
+const setDaily = (dailyData) => {
   // create card for daily weather
   const daily = document.createElement('div');
   daily.classList.add('daily');
   wrapper.append(daily);
+
+  // set date
+  const showDate = (dailyDate) => {
+    const date = new Date(dailyDate);
+    const options = {
+      weekday: 'short',
+      day: '2-digit',
+    };
+    return date.toLocaleDateString([], options);
+  };
+
+  // set content
   daily.innerHTML = `
-  <div class="daily_data">
-    <span class="day">Today</span>
-    <span class="icon">100</span>
-    <span class="temp">10°C</span>
-    <span class="time">100</span>
+  <div class="daily_holder">
+    <div class="daily_data">
+      <span class="day">${showDate(dailyData[0].observation_time.value)}</span>
+      <span class="temp-max">${dailyData[0].temp[1].max.value}</span>
+      <span class="temp-min">${dailyData[0].temp[0].min.value}</span>
+      <span class="icon">100</span>
+      <span class="precp">${dailyData[0].precipitation_probability.value}</span>
+    </div>
+    <div class="daily_data">
+      <span class="day">${showDate(dailyData[1].observation_time.value)}</span>
+      <span class="temp-max">${dailyData[1].temp[1].max.value}</span>
+      <span class="temp-min">${dailyData[1].temp[0].min.value}</span>
+      <span class="icon">100</span>
+      <span class="precp">${dailyData[1].precipitation_probability.value}</span>
+    </div>
+    <div class="daily_data">
+      <span class="day">${showDate(dailyData[2].observation_time.value)}</span>
+      <span class="temp-max">${dailyData[2].temp[1].max.value}</span>
+      <span class="temp-min">${dailyData[2].temp[0].min.value}</span>
+      <span class="icon">100</span>
+      <span class="precp">${dailyData[2].precipitation_probability.value}</span>
+    </div>
+    <div class="daily_data">
+      <span class="day">${showDate(dailyData[3].observation_time.value)}</span>
+      <span class="temp-max">${dailyData[3].temp[1].max.value}</span>
+      <span class="temp-min">${dailyData[3].temp[0].min.value}</span>
+      <span class="icon">100</span>
+      <span class="precp">${dailyData[3].precipitation_probability.value}</span>
+    </div>
+    <div class="daily_data">
+      <span class="day">${showDate(dailyData[4].observation_time.value)}</span>
+      <span class="temp-max">${dailyData[4].temp[1].max.value}</span>
+      <span class="temp-min">${dailyData[4].temp[0].min.value}</span>
+      <span class="icon">100</span>
+      <span class="precp">${dailyData[4].precipitation_probability.value}</span>
+    </div>
   </div>
-  <div class="daily_data">
-    <span class="day">Today</span>
-    <span class="icon">100</span>
-    <span class="temp">10°C</span>
-    <span class="time">100</span>
-  </div>
-  <div class="daily_data">
-    <span class="day">Today</span>
-    <span class="icon">100</span>
-    <span class="temp">10°C</span>
-    <span class="time">100</span>
-  </div>
-  <div class="daily_data">
-    <span class="day">Today</span>
-    <span class="icon">100</span>
-    <span class="temp">10°C</span>
-    <span class="time">100</span>
-  </div>
-  <div class="daily_data">
-    <span class="day">Today</span>
-    <span class="icon">100</span>
-    <span class="temp">10°C</span>
-    <span class="time">100</span>
-  </div>
-  <div class="daily_data">
-    <span class="day">Today</span>
-    <span class="icon">100</span>
-    <span class="temp">10°C</span>
-    <span class="time">100</span>
-  </div>
-  <div class="daily_data">
-    <span class="day">Today</span>
-    <span class="icon">100</span>
-    <span class="temp">10°C</span>
-    <span class="time">100</span>
-  </div>
-  <button>See More</button>
+  <button>Next 10 Days</button>
 `;
 };
 
@@ -232,9 +229,8 @@ const render = () => {
   label.remove();
   setHeader();
   setAir();
-  setDaily();
 };
 
 export {
-  render, setCurrentTemp, setCurrentWeather, setHourly,
+  render, setCurrentTemp, setCurrentWeather, setHourly, setDaily,
 };

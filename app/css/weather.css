@@ -141,10 +141,17 @@ body {
   padding: 1rem;
 }
 
-.hourly_data {
-  padding: 0.5rem 0;
+.hourly_holder {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.hourly_data {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  text-align: center;
 }
 
 .daily {
@@ -153,10 +160,16 @@ body {
   padding: 1rem;
 }
 
+.daily_holder {
+  display: flex;
+  justify-content: space-around;
+}
+
 .daily_data {
   padding: 0.5rem 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
 }
 
 /* homepage styling */
