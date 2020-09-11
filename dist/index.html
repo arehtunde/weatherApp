@@ -9,18 +9,16 @@
 </head>
 <body>
   <header class="header">
-    <a href="index.html" class="header_link">
-      <h1>Weather Forecast</h1>
-    </a>
-  </header>
-
-  <main class="main">
-    <section class="search">
+    <h1 class="header_title"><a href="index.html" class="header_link">Weather Forecast</a></h1>
+    <div class="search">
       <label for="search" class="search_label">Enter your Location</label>
       <input type="text" class="search_input" id="search" placeholder="Enter a location e.g ikeja Lagos, Nigeria">
       <button class="btn">Get Weather Forecast</button>
-    </section>
-    <section class="feature">
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="feature">
       <div class="card">
         <i class="fas fa-cloud-sun card_icon"></i>
         <p>Detailed Weather Report</p>
@@ -33,11 +31,11 @@
         <i class="far fa-clock card_icon"></i>
         <p>Five Days Forecast</p>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="foot">
-    <p>Made with ❤️ by Areh Tunde</p>
+    <p class="foot_text">Made with ❤️ by Areh Tunde</p>
     <div>
       <a href="#" class="foot_link"><span>Github</span></a>
       <span>|</span>
@@ -45,7 +43,7 @@
     </div>
   </footer>
 
-  <script type="module" src="app/js/weather.js"></script>
+  <script type="module" src="/app/js/weather.js" async></script>
   <script src="https://kit.fontawesome.com/8c64d9042a.js" crossorigin="anonymous"></script>
 </body>
 </html>
