@@ -1,5 +1,5 @@
 import {
-  render, setCurrentTemp, setCurrentWeather, setHourly, setDaily,
+  render, setCurrentTemp, setCurrentWeather, setHourly, setDaily, setAir,
 } from './result.js';
 
 const main = document.querySelector('.main');
@@ -17,6 +17,14 @@ const getCoord = async () => {
   const coordUrl = `${coordApi}q=${encodedInput}&key=${coordKey}&${coordParam}`;
 
   try {
+    // loader
+    const loader = document.querySelector('.loader');
+    const load = document.querySelector('.load');
+    render();
+    main.style.display = 'none';
+    load.style.display = 'block';
+    loader.style.display = 'block';
+
     const fetchCoord = fetch(coordUrl);
     const response = await fetchCoord;
     const data = await response.json();
@@ -24,13 +32,16 @@ const getCoord = async () => {
     // coordinates
     const coord = data.results[0].geometry;
     const output = data.results[0].components;
-    console.log(output);
 
     // current weather query parameters
     const key = 'vK6swCrrskXqnuZGn4NT7q7Aj1YuZINH';
     const currentWeather = 'https://api.climacell.co/v3/weather/realtime?';
     const fields = ['precipitation', 'precipitation_type', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'dewpoint', 'visibility', 'moon_phase', 'cloud_cover', 'wind_direction', 'wind_speed', 'weather_code'];
     const currentWeatherUrl = `${currentWeather}lat=${coord.lat}&lon=${coord.lng}&fields=${fields}&apikey=${key}`;
+
+    // air quality query parameters
+    const airFields = ['pm25', 'pm10', 'o3', 'no2', 'co', 'so2', 'epa_aqi', 'epa_health_concern', 'epa_primary_pollutant'];
+    const airUrl = `${currentWeather}lat=${coord.lat}&lon=${coord.lng}&fields=${airFields}&apikey=${key}`;
 
     // hourly weather query parameter
     const hourlyWeather = 'https://api.climacell.co/v3/weather/forecast/hourly?';
@@ -48,22 +59,27 @@ const getCoord = async () => {
     endDate.setDate(endDate.getDate() + 10);
     const dailyWeatherUrl = `${dailyWeather}lat=${coord.lat}&lon=${coord.lng}&start_time=now&end_time=${endDate.toISOString()}&fields=${dailyFields}&apikey=${key}`;
 
-    const [currentResponse, hourlyResponse, dailyResponse] = await Promise.all([
+    const [currentResponse, airResponse, hourlyResponse, dailyResponse] = await Promise.all([
       fetch(currentWeatherUrl),
+      fetch(airUrl),
       fetch(hourlyWeatherUrl),
       fetch(dailyWeatherUrl),
     ]);
 
-    const [currentData, hourlyData, dailyData] = await Promise.all([
-      currentResponse.json(), hourlyResponse.json(), dailyResponse.json(),
+    const [currentData, airData, hourlyData, dailyData] = await Promise.all([
+      currentResponse.json(), airResponse.json(), hourlyResponse.json(), dailyResponse.json(),
     ]);
-    console.log(hourlyData);
-    console.log(dailyData);
+    // setup
+    load.style.display = 'none';
+    loader.style.display = 'none';
+    main.style.display = 'block';
+    // render();
     setCurrentTemp(currentData, output);
     setCurrentWeather(currentData, output);
+    setAir(airData);
     setHourly(hourlyData);
     setDaily(dailyData);
-    render();
+    console.log(airData);
   } catch (error) {
     errorInfo.innerHTML = `<h2>${input} Not Found!</h2>
     <p>Please Enter a valid city name</p>`;

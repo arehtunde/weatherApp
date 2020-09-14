@@ -42,13 +42,13 @@
 
 .currenttemp {
   border: 2px solid red;
-  margin: $space-2;
+  margin: $space-4 $space-2;
   padding: $space-2;
   @include flex();
+  font-weight: 650;
 
   &_detail {
     margin-right: auto;
-    font-weight: 650;
   }
 }
 
@@ -59,6 +59,7 @@
 .currenttemp_detail {
   .temp {
     font-size: clamp(3.5rem, 5vw, 5rem);
+    font-weight: 700;
   
     &_unit {
       font-size: clamp(1.6rem, 2.6vw, 2rem);
@@ -67,14 +68,12 @@
 }
 
 .currenttemp_description {
-  .descp {
-    text-align: center;
-  }
+  text-align: center;
 }
 
 .currentweather {
   border: 2px solid red;
-  margin: $space-2;
+  margin: $space-4 $space-2;
   padding: $space-2;
 }
 
@@ -83,21 +82,31 @@
 }
 
 .feel {
-  font-weight: 650;
+  font-weight: 700;
   font-size: clamp(3.5rem, 5vw, 5rem);
+  line-height: 1;
 
   &_unit {
     font-size: clamp(1.6rem, 2.6vw, 2rem);
+  }
+
+  &_text {
+    font-weight: 550;
   }
 }
 
 .currentdata {
   list-style: none;
+  font-weight: 550;
 
   &_list {
     display: flex;
     padding: $space-1 0;
-    font-weight: 650;
+    border-top: 2px solid red;
+    
+    .fas {
+      line-height: 1.5;
+    }
   
     .prop {
       margin: 0 auto 0 $space-2;
@@ -107,56 +116,116 @@
 
 .air {
   border: 2px solid red;
-  margin: $space-2;
+  margin: $space-4 $space-2;
   padding: $space-2;
+
+  button {
+    @include button();
+    padding: $space-1 $space-2;
+    border: none;
+    border-radius: 25px;
+  }
 }
 
 .air_detail {
   display: flex;
   margin: $space-2 0;
+  padding: $space-2;
 }
 
 .airvalue {
   border: 1px solid red;
-  flex-basis: 50%;
-  margin: 0 $space-4;
-  //border-radius: 50%;
+  margin-right: $space-4;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
   text-align: center;
+  line-height: 100px;
+  font-size: 3.3rem;
+}
+
+.airtext {
+  margin-left: $space-4;
 }
 
 .hourly {
   border: 2px solid red;
-  margin: $space-2;
+  margin: $space-4 $space-2;
   padding: $space-2;
 
   &_holder {
     display: flex;
-    justify-content: space-around;
+    margin: $space-2 0;
+  }
+
+  button {
+    @include button();
+    padding: $space-1 $space-2;
+    border: none;
+    border-radius: 25px;
+
+    &:hover {
+      background-color: $txt-color;
+      color: $bg-color;
+    }
+  
+    &:active {
+      border: $bord;
+    }
+  
+    &:focus {
+      outline: $bord;
+      background-color: $txt-color;
+      color: $bg-color;
+    }
   }
 }
 
 .hourly_data {
-  padding: $space-1 $space-2;
+  flex-basis: 20%;
   display: flex;
-  flex-direction: column;
   border: 2px solid red;
+  flex-direction: column;
   text-align: center;
 } 
 
 .daily {
   border: 2px solid red;
-  margin: $space-2;
+  margin: $space-4 $space-2;
   padding: $space-2;
 
   &_holder {
     display: flex;
-    justify-content: space-around;
+    margin: $space-2 0;
+  }
+
+  button {
+    @include button();
+    padding: $space-1 $space-2;
+    border: none;
+    border-radius: 25px;
+
+    &:hover {
+      background-color: $txt-color;
+      color: $bg-color;
+    }
+  
+    &:active {
+      border: $bord;
+    }
+  
+    &:focus {
+      outline: $bord;
+      background-color: $txt-color;
+      color: $bg-color;
+    }
   }
 }
 
 .daily_data {
-  padding: $space-1 0;
+  flex-basis: 20%;
   display: flex;
   flex-direction: column;
+  border: 2px solid red;
   text-align: center;
 }
