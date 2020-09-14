@@ -53,11 +53,12 @@ const setCurrentTemp = (currentData, location) => {
   currentTemp.innerHTML = `
     <div class="currenttemp_detail">
       <p class="date">${showDate}</p>
-      <p class="location"><i class="fas fa-map-marker-alt"></i><span class="value">${location.county}, ${location.state}</span></p>
-      <p class="temp"><span class="temp_value">${currentData.temp.value}</span><sup class="temp_unit">°C</sup></p>
+      <p class="location"><i class="fas fa-map-marker-alt"></i><span class="value">${location.state}</span></p>
+      <p class="temp"><span class="temp_value">${Math.round(currentData.temp.value)}</span><sup class="temp_unit">°C</sup></p>
     </div>
     <div class="currenttemp_description">
       <p class="descp">${currentData.weather_code.value}</p>
+      <img src="app/icons/${currentData.weather_code.value}.svg" width="50px" height="50px">
       <p class="icon">weather icon</p>
     </div>
   `;
@@ -71,25 +72,25 @@ const setCurrentWeather = (currentData, location) => {
   current.innerHTML = `
     <div class="currentweather_detail">
       <h3 class="title">Current Weather in ${location.state}</h3>
-      <p class="feel"><span class="feel_value">${currentData.feels_like.value}</span><sup class="feel_unit">°C</sup></p>
+      <p class="feel"><span class="feel_value">${Math.round(currentData.feels_like.value)}</span><sup class="feel_unit">°C</sup></p>
       <span class="feel_text">Feels like</span>
     </div>
     <div class="currentweather_data">
       <ul class="currentdata">
-        <li class="currentdata_list"><i class="fas fa-tint"></i><span class="prop">Dew Point</span><span class="value">${currentData.dewpoint.value}</span><span>°C</span></li>
-        <li class="currentdata_list"><i class="fas fa-tint"></i><span class="prop">Humidity</span><span class="value">${currentData.humidity.value}%</span></li>
-        <li class="currentdata_list"><i class="fas fa-compress-arrows-alt"></i><span class="prop">Pressure</span><span class="value">${currentData.baro_pressure.value}</span><span>hPa</span></li>
-        <li class="currentdata_list"><i class="fas fa-eye"></i><span class="prop">Visibility</span><span class="value">${currentData.visibility.value}</span><span>km</span></li>
-        <li class="currentdata_list"><i class="fas fa-wind"></i><span class="prop">Wind</span><span class="value">${currentData.wind_speed.value}</span><span>m/s</span></li>
-        <li class="currentdata_list"><i class="fas fa-cloud"></i><span class="prop">Cloud Cover</span><span class="value">${currentData.cloud_cover.value}%</span></li>
-        <li class="currentdata_list"><span class="icon">het</span><span class="prop">Precipitation</span><span class="value">${currentData.precipitation.value}</span><span>mm/hr</span></li>
+        <li class="currentdata_list"><i class="fas fa-tint"></i><span class="prop">Dew Point</span><span class="value">${Math.round(currentData.dewpoint.value)}</span><span>°C</span></li>
+        <li class="currentdata_list"><i class="fas fa-tint"></i><span class="prop">Humidity</span><span class="value">${Math.round(currentData.humidity.value)}%</span></li>
+        <li class="currentdata_list"><i class="fas fa-compress-arrows-alt"></i><span class="prop">Pressure</span><span class="value">${Math.round(currentData.baro_pressure.value)}</span><span>hPa</span></li>
+        <li class="currentdata_list"><i class="fas fa-eye"></i><span class="prop">Visibility</span><span class="value">${Math.round(currentData.visibility.value)}</span><span>km</span></li>
+        <li class="currentdata_list"><i class="fas fa-wind"></i><span class="prop">Wind</span><span class="value">${Math.round(currentData.wind_speed.value)}</span><span>m/s</span></li>
+        <li class="currentdata_list"><i class="fas fa-cloud"></i><span class="prop">Cloud Cover</span><span class="value">${Math.round(currentData.cloud_cover.value)}%</span></li>
+        <li class="currentdata_list"><span class="icon">het</span><span class="prop">Precipitation</span><span class="value">${Math.round(currentData.precipitation.value)}</span><span>mm/hr</span></li>
         <li class="currentdata_list"><i class="fas fa-moon"></i><span class="prop">Moon Phase</span><span class="value">${currentData.moon_phase.value}</span></li>
       </ul>
     </div>
   `;
 };
 
-const setAir = () => {
+const setAir = (airData) => {
   // create card for air quality
   const air = document.createElement('div');
   air.classList.add('air');
@@ -97,10 +98,10 @@ const setAir = () => {
   air.innerHTML = `
     <h3 class="air_title">Air Quality Index</h3>
     <div class="air_detail">
-      <div class="airvalue">34</div>
+      <div class="airvalue">${Math.round(airData.epa_aqi.value)}</div>
       <div class="airtext">
         <h4 class="airtext_verdict">Good</h4>
-        <p class="airtext_expand">Air quality is considered satiisfactory and air pollution poses little or no risk</p>
+        <p class="airtext_expand">${airData.epa_health_concern.value}</p>
       </div>
     </div>
     <button>See Details</button>
@@ -125,36 +126,37 @@ const setHourly = (hourlyData) => {
 
   // set content
   hourly.innerHTML = `
+    <h3>Hourly Forecast</h3>
     <div class="hourly_holder">
       <div class="hourly_data">
         <span class="time">${showTime(hourlyData[0].observation_time.value)}</span>
-        <span class="temp">${hourlyData[0].temp.value}</span>
+        <span class="temp">${Math.round(hourlyData[0].temp.value)}</span>
         <span class="icon">icon</span>
-        <span class="precp">${hourlyData[0].precipitation_probability.value}</span>
+        <span class="precp">${Math.round(hourlyData[0].precipitation_probability.value)}</span>
       </div>
       <div class="hourly_data">
         <span class="time">${showTime(hourlyData[1].observation_time.value)}</span>
-        <span class="temp">${hourlyData[1].temp.value}</span>
+        <span class="temp">${Math.round(hourlyData[1].temp.value)}</span>
         <span class="icon">100</span>
-        <span class="precp">${hourlyData[1].precipitation_probability.value}</span>
+        <span class="precp">${Math.round(hourlyData[1].precipitation_probability.value)}</span>
       </div>
       <div class="hourly_data">
         <span class="time">${showTime(hourlyData[2].observation_time.value)}</span>
-        <span class="temp">${hourlyData[2].temp.value}</span>
+        <span class="temp">${Math.round(hourlyData[2].temp.value)}</span>
         <span class="icon">100</span>
-        <span class="precp">${hourlyData[2].precipitation_probability.value}</span>
+        <span class="precp">${Math.round(hourlyData[2].precipitation_probability.value)}</span>
       </div>
       <div class="hourly_data">
         <span class="time">${showTime(hourlyData[3].observation_time.value)}</span>
-        <span class="temp">${hourlyData[3].temp.value}</span>
+        <span class="temp">${Math.round(hourlyData[3].temp.value)}</span>
         <span class="icon">100</span>
-        <span class="precp">${hourlyData[3].precipitation_probability.value}</span>
+        <span class="precp">${Math.round(hourlyData[3].precipitation_probability.value)}</span>
       </div>
       <div class="hourly_data">
         <span class="time">${showTime(hourlyData[4].observation_time.value)}</span>
-        <span class="temp">${hourlyData[4].temp.value}</span>
+        <span class="temp">${Math.round(hourlyData[4].temp.value)}</span>
         <span class="icon">100</span>
-        <span class="precp">${hourlyData[4].precipitation_probability.value}</span>
+        <span class="precp">${Math.round(hourlyData[4].precipitation_probability.value)}</span>
       </div>
     </div>
     <button>Next 24 Hours</button>
@@ -179,44 +181,45 @@ const setDaily = (dailyData) => {
 
   // set content
   daily.innerHTML = `
-  <div class="daily_holder">
-    <div class="daily_data">
-      <span class="day">${showDate(dailyData[0].observation_time.value)}</span>
-      <span class="temp-max">${dailyData[0].temp[1].max.value}</span>
-      <span class="temp-min">${dailyData[0].temp[0].min.value}</span>
-      <span class="icon">100</span>
-      <span class="precp">${dailyData[0].precipitation_probability.value}</span>
+    <h3>Daily Forecast</h3>
+    <div class="daily_holder">
+      <div class="daily_data">
+        <span class="day">${showDate(dailyData[0].observation_time.value)}</span>
+        <span class="temp-max">${Math.round(dailyData[0].temp[1].max.value)}</span>
+        <span class="temp-min">${Math.round(dailyData[0].temp[0].min.value)}</span>
+        <span class="icon">100</span>
+        <span class="precp">${Math.round(dailyData[0].precipitation_probability.value)}</span>
+      </div>
+      <div class="daily_data">
+        <span class="day">${showDate(dailyData[1].observation_time.value)}</span>
+        <span class="temp-max">${Math.round(dailyData[1].temp[1].max.value)}</span>
+        <span class="temp-min">${Math.round(dailyData[1].temp[0].min.value)}</span>
+        <span class="icon">100</span>
+        <span class="precp">${Math.round(dailyData[1].precipitation_probability.value)}</span>
+      </div>
+      <div class="daily_data">
+        <span class="day">${showDate(dailyData[2].observation_time.value)}</span>
+        <span class="temp-max">${Math.round(dailyData[2].temp[1].max.value)}</span>
+        <span class="temp-min">${Math.round(dailyData[2].temp[0].min.value)}</span>
+        <span class="icon">100</span>
+        <span class="precp">${Math.round(dailyData[2].precipitation_probability.value)}</span>
+      </div>
+      <div class="daily_data">
+        <span class="day">${showDate(dailyData[3].observation_time.value)}</span>
+        <span class="temp-max">${Math.round(dailyData[3].temp[1].max.value)}</span>
+        <span class="temp-min">${Math.round(dailyData[3].temp[0].min.value)}</span>
+        <span class="icon">100</span>
+        <span class="precp">${Math.round(dailyData[3].precipitation_probability.value)}</span>
+      </div>
+      <div class="daily_data">
+        <span class="day">${showDate(dailyData[4].observation_time.value)}</span>
+        <span class="temp-max">${Math.round(dailyData[4].temp[1].max.value)}</span>
+        <span class="temp-min">${Math.round(dailyData[4].temp[0].min.value)}</span>
+        <span class="icon">100</span>
+        <span class="precp">${Math.round(dailyData[4].precipitation_probability.value)}</span>
+      </div>
     </div>
-    <div class="daily_data">
-      <span class="day">${showDate(dailyData[1].observation_time.value)}</span>
-      <span class="temp-max">${dailyData[1].temp[1].max.value}</span>
-      <span class="temp-min">${dailyData[1].temp[0].min.value}</span>
-      <span class="icon">100</span>
-      <span class="precp">${dailyData[1].precipitation_probability.value}</span>
-    </div>
-    <div class="daily_data">
-      <span class="day">${showDate(dailyData[2].observation_time.value)}</span>
-      <span class="temp-max">${dailyData[2].temp[1].max.value}</span>
-      <span class="temp-min">${dailyData[2].temp[0].min.value}</span>
-      <span class="icon">100</span>
-      <span class="precp">${dailyData[2].precipitation_probability.value}</span>
-    </div>
-    <div class="daily_data">
-      <span class="day">${showDate(dailyData[3].observation_time.value)}</span>
-      <span class="temp-max">${dailyData[3].temp[1].max.value}</span>
-      <span class="temp-min">${dailyData[3].temp[0].min.value}</span>
-      <span class="icon">100</span>
-      <span class="precp">${dailyData[3].precipitation_probability.value}</span>
-    </div>
-    <div class="daily_data">
-      <span class="day">${showDate(dailyData[4].observation_time.value)}</span>
-      <span class="temp-max">${dailyData[4].temp[1].max.value}</span>
-      <span class="temp-min">${dailyData[4].temp[0].min.value}</span>
-      <span class="icon">100</span>
-      <span class="precp">${dailyData[4].precipitation_probability.value}</span>
-    </div>
-  </div>
-  <button>Next 10 Days</button>
+    <button>Next 10 Days</button>
 `;
 };
 
@@ -228,9 +231,8 @@ const render = () => {
   feature.remove();
   label.remove();
   setHeader();
-  setAir();
 };
 
 export {
-  render, setCurrentTemp, setCurrentWeather, setHourly, setDaily,
+  render, setCurrentTemp, setCurrentWeather, setHourly, setDaily, setAir,
 };
