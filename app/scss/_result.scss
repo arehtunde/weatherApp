@@ -41,11 +41,13 @@
 }
 
 .currenttemp {
-  border: 2px solid red;
   margin: $space-4 $space-2;
   padding: $space-2;
   @include flex();
-  font-weight: 650;
+  font-weight: 550;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 6px -6px #777;
 
   &_detail {
     margin-right: auto;
@@ -58,66 +60,67 @@
 
 .currenttemp_detail {
   .temp {
-    font-size: clamp(3.5rem, 5vw, 5rem);
-    font-weight: 700;
-  
-    &_unit {
-      font-size: clamp(1.6rem, 2.6vw, 2rem);
-    }
+    font-size: clamp(5rem, 4.6vw, 6rem);
+    font-weight: 600;
+    line-height: 1.2;
   }
 }
 
 .currenttemp_description {
   text-align: center;
+  margin: $space-3 $space-4 0 0;
 }
 
 .currentweather {
-  border: 2px solid red;
   margin: $space-4 $space-2;
   padding: $space-2;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 550;
+  box-shadow: 10px 10px 6px -6px #777;
 }
 
 .currentweather_detail {
   margin-bottom: $space-2;
-}
 
-.feel {
-  font-weight: 700;
-  font-size: clamp(3.5rem, 5vw, 5rem);
-  line-height: 1;
-
-  &_unit {
-    font-size: clamp(1.6rem, 2.6vw, 2rem);
-  }
-
-  &_text {
-    font-weight: 550;
+  .feel {
+    font-size: clamp(4rem, 3.6vw, 5rem);;
+    margin: $space-2 0 0 $space-2;
+    line-height: .9;
+    font-weight: 450;
+  
+    &_text {
+      margin-left: $space-2;
+    }
   }
 }
 
 .currentdata {
   list-style: none;
-  font-weight: 550;
 
   &_list {
     display: flex;
     padding: $space-1 0;
-    border-top: 2px solid red;
+    border-top: 1px solid #bdbdbd;
     
     .fas {
       line-height: 1.5;
+      flex-basis: 8%;
+      margin-left: $space-2;
     }
   
     .prop {
-      margin: 0 auto 0 $space-2;
+      margin-right: auto;
     }
   }
 }
 
 .air {
-  border: 2px solid red;
   margin: $space-4 $space-2;
   padding: $space-2;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 6px -6px #777;
 
   button {
     @include button();
@@ -134,24 +137,28 @@
 }
 
 .airvalue {
-  border: 1px solid red;
+  border: 5px solid #bdbdbd;
+  border-bottom-color: #080;
   margin-right: $space-4;
   height: 100px;
   width: 100px;
   border-radius: 50%;
   text-align: center;
   line-height: 100px;
-  font-size: 3.3rem;
+  font-size: 3.2rem;
+  font-weight: 500;
 }
 
 .airtext {
   margin-left: $space-4;
 }
 
-.hourly {
-  border: 2px solid red;
+.common {
   margin: $space-4 $space-2;
   padding: $space-2;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 6px -6px #777;
 
   &_holder {
     display: flex;
@@ -181,51 +188,33 @@
   }
 }
 
-.hourly_data {
+.common-data {
   flex-basis: 20%;
-  display: flex;
-  border: 2px solid red;
-  flex-direction: column;
+  border-right: 1px solid #bdbdbd;
   text-align: center;
-} 
 
-.daily {
-  border: 2px solid red;
-  margin: $space-4 $space-2;
-  padding: $space-2;
-
-  &_holder {
-    display: flex;
-    margin: $space-2 0;
+  &:first-child {
+    font-weight: 700;
   }
 
-  button {
-    @include button();
-    padding: $space-1 $space-2;
-    border: none;
-    border-radius: 25px;
-
-    &:hover {
-      background-color: $txt-color;
-      color: $bg-color;
-    }
-  
-    &:active {
-      border: $bord;
-    }
-  
-    &:focus {
-      outline: $bord;
-      background-color: $txt-color;
-      color: $bg-color;
-    }
+  &:last-child {
+    border-right: 0;
   }
-}
 
-.daily_data {
-  flex-basis: 20%;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid red;
-  text-align: center;
+  .temp {
+    font-size: clamp(2.5rem, 2.6vw, 4rem);
+  }
+
+  .now {
+    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .fas {
+    margin-right: $space-1;
+  }
 }
