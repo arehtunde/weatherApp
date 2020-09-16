@@ -14,6 +14,7 @@ body {
   height: 100vh;
   font-family: 'Recursive', monospace;
   font-size: clamp(1.6rem, 2.6vw, 2rem);
+  background-color: #bdbdbd;
   line-height: 1.5;
 }
 
@@ -56,12 +57,14 @@ body {
 }
 
 .currenttemp {
-  border: 2px solid red;
   margin: 2rem 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: row;
-  font-weight: 650;
+  font-weight: 550;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 6px -6px #777;
 }
 
 .currenttemp_detail {
@@ -73,65 +76,66 @@ body {
 }
 
 .currenttemp_detail .temp {
-  font-size: clamp(3.5rem, 5vw, 5rem);
-  font-weight: 700;
-}
-
-.currenttemp_detail .temp_unit {
-  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  font-size: clamp(5rem, 4.6vw, 6rem);
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .currenttemp_description {
   text-align: center;
+  margin: 1.5rem 2rem 0 0;
 }
 
 .currentweather {
-  border: 2px solid red;
   margin: 2rem 1rem;
   padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 550;
+  box-shadow: 10px 10px 6px -6px #777;
 }
 
 .currentweather_detail {
   margin-bottom: 1rem;
 }
 
-.feel {
-  font-weight: 700;
-  font-size: clamp(3.5rem, 5vw, 5rem);
-  line-height: 1;
+.currentweather_detail .feel {
+  font-size: clamp(4rem, 3.6vw, 5rem);
+  margin: 1rem 0 0 1rem;
+  line-height: .9;
+  font-weight: 450;
 }
 
-.feel_unit {
-  font-size: clamp(1.6rem, 2.6vw, 2rem);
-}
-
-.feel_text {
-  font-weight: 550;
+.currentweather_detail .feel_text {
+  margin-left: 1rem;
 }
 
 .currentdata {
   list-style: none;
-  font-weight: 550;
 }
 
 .currentdata_list {
   display: flex;
   padding: 0.5rem 0;
-  border-top: 2px solid red;
+  border-top: 1px solid #bdbdbd;
 }
 
 .currentdata_list .fas {
   line-height: 1.5;
+  flex-basis: 8%;
+  margin-left: 1rem;
 }
 
 .currentdata_list .prop {
-  margin: 0 auto 0 1rem;
+  margin-right: auto;
 }
 
 .air {
-  border: 2px solid red;
   margin: 2rem 1rem;
   padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 6px -6px #777;
 }
 
 .air button {
@@ -152,32 +156,36 @@ body {
 }
 
 .airvalue {
-  border: 1px solid red;
+  border: 5px solid #bdbdbd;
+  border-bottom-color: #080;
   margin-right: 2rem;
   height: 100px;
   width: 100px;
   border-radius: 50%;
   text-align: center;
   line-height: 100px;
-  font-size: 3.3rem;
+  font-size: 3.2rem;
+  font-weight: 500;
 }
 
 .airtext {
   margin-left: 2rem;
 }
 
-.hourly {
-  border: 2px solid red;
+.common {
   margin: 2rem 1rem;
   padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 6px -6px #777;
 }
 
-.hourly_holder {
+.common_holder {
   display: flex;
   margin: 1rem 0;
 }
 
-.hourly button {
+.common button {
   background-color: #011b33;
   color: #fff;
   font-family: inherit;
@@ -188,72 +196,50 @@ body {
   border-radius: 25px;
 }
 
-.hourly button:hover {
+.common button:hover {
   background-color: #fff;
   color: #011b33;
 }
 
-.hourly button:active {
+.common button:active {
   border: 2px solid #011b33;
 }
 
-.hourly button:focus {
+.common button:focus {
   outline: 2px solid #011b33;
   background-color: #fff;
   color: #011b33;
 }
 
-.hourly_data {
+.common-data {
   flex-basis: 20%;
-  display: flex;
-  border: 2px solid red;
-  flex-direction: column;
+  border-right: 1px solid #bdbdbd;
   text-align: center;
 }
 
-.daily {
-  border: 2px solid red;
-  margin: 2rem 1rem;
-  padding: 1rem;
+.common-data:first-child {
+  font-weight: 700;
 }
 
-.daily_holder {
-  display: flex;
-  margin: 1rem 0;
+.common-data:last-child {
+  border-right: 0;
 }
 
-.daily button {
-  background-color: #011b33;
-  color: #fff;
-  font-family: inherit;
-  font-size: 1.4rem;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 25px;
+.common-data .temp {
+  font-size: clamp(2.5rem, 2.6vw, 4rem);
 }
 
-.daily button:hover {
-  background-color: #fff;
-  color: #011b33;
+.common-data .now {
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
 }
 
-.daily button:active {
-  border: 2px solid #011b33;
+.common-data img {
+  width: 50px;
+  height: 50px;
 }
 
-.daily button:focus {
-  outline: 2px solid #011b33;
-  background-color: #fff;
-  color: #011b33;
-}
-
-.daily_data {
-  flex-basis: 20%;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid red;
-  text-align: center;
+.common-data .fas {
+  margin-right: 0.5rem;
 }
 
 /* homepage styling */
@@ -286,7 +272,7 @@ body {
   border-radius: 5px;
 }
 
-.btn {
+.btn1 {
   background-color: #011b33;
   color: #fff;
   font-family: inherit;
@@ -298,16 +284,16 @@ body {
   border-radius: 5px;
 }
 
-.btn:hover {
+.btn1:hover {
   background-color: #fff;
   color: #011b33;
 }
 
-.btn:active {
+.btn1:active {
   border: 2px solid #011b33;
 }
 
-.btn:focus {
+.btn1:focus {
   outline: 2px solid #011b33;
   background-color: #fff;
   color: #011b33;
@@ -334,7 +320,6 @@ body {
 }
 
 .foot {
-  border-top: 2px solid red;
   color: #011b33;
   text-align: center;
 }
@@ -351,7 +336,6 @@ body {
 .load {
   height: 80vh;
   display: none;
-  border: 1px solid red;
   position: relative;
 }
 
@@ -361,9 +345,9 @@ body {
   position: absolute;
   top: 40%;
   left: 45%;
-  border: 5px solid rgba(189, 189, 189, 0.25);
-  border-left-color: #039be5;
-  border-top-color: #039be5;
+  border: 5px solid #c0c0c0;
+  border-left-color: #011b33;
+  border-top-color: #011b33;
   border-radius: 50%;
   animation: rotate 600ms infinite linear;
 }

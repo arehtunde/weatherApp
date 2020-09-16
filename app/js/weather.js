@@ -79,7 +79,6 @@ const getCoord = async () => {
     setAir(airData);
     setHourly(hourlyData);
     setDaily(dailyData);
-    console.log(airData);
   } catch (error) {
     errorInfo.innerHTML = `<h2>${input} Not Found!</h2>
     <p>Please Enter a valid city name</p>`;
