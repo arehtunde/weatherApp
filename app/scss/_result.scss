@@ -25,11 +25,11 @@
   flex-basis: 80%;
   @include flex();
 
-  &_input {
+  /* &_input {
     @include input();
     width: 80%;
     border-radius: 5px 0 0 5px;
-  }
+  } */
 }
 
 .btn2 {
@@ -69,6 +69,11 @@
 .currenttemp_description {
   text-align: center;
   margin: $space-3 $space-4 0 0;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .currentweather {
@@ -217,4 +222,10 @@
   .fas {
     margin-right: $space-1;
   }
+}
+
+.error {
+  height: 60vh;
+  padding: $space-4 $space-2;
+  text-align: center;
 }
