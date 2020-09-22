@@ -1,36 +1,34 @@
-// create and append wrapper to main
-const main = document.querySelector('.main');
-const wrapper = document.createElement('div');
-wrapper.classList.add('wrapper');
-main.append(wrapper);
+const wrapper = document.querySelector('.wrapper');
 
 const setHeader = () => {
   const header = document.querySelector('.header');
   header.classList.add('header2');
 
   // set title
-  const headerTitle = document.querySelector('.header_title');
-  headerTitle.classList.remove('header_title');
-  headerTitle.classList.add('page_title');
+  const headerTitle = document.querySelector('#header_title');
+  headerTitle.setAttribute('class', 'page_title');
   headerTitle.innerHTML = `
   <a href="index.html" class="header_link">WF</a>`;
 
   // set search container
-  const search = document.querySelector('.search');
-  search.classList.remove('search');
-  search.classList.add('query');
+  const search = document.querySelector('#search');
+  search.setAttribute('class', 'query');
 
   // set input box
   const searchInput = document.querySelector('.search_input');
-  searchInput.classList.remove('search_input');
-  searchInput.classList.add('query_input');
+  searchInput.style.width = '80%';
+  searchInput.style.borderRadius = '5px 0 0 5px';
 
   // modifying button
-  const button2 = document.createElement('button');
-  search.append(button2);
-  button2.classList.add('btn2');
-  button2.innerHTML = `
+  const button = document.querySelector('.btn');
+  button.classList.remove('btn1');
+  button.classList.add('btn2');
+  button.innerHTML = `
   <i class="fas fa-search-location"></i>`;
+
+  // set footer
+  const footer = document.querySelector('.foot');
+  footer.style.borderTop = '2px solid #011b33';
 };
 
 const setCurrentTemp = (currentData, location) => {
@@ -58,7 +56,7 @@ const setCurrentTemp = (currentData, location) => {
     </div>
     <div class="currenttemp_description">
       <p class="descp">${currentData.weather_code.value}</p>
-      <img src="app/icons/${currentData.weather_code.value}.svg" width="50px" height="50px">
+      <img src="app/icons/${currentData.weather_code.value}.svg" alt="${currentData.weather_code.value}">
     </div>
   `;
 };
@@ -130,31 +128,31 @@ const setHourly = (hourlyData) => {
       <div class="common-data">
         <span class="now">Now</span>
         <span class="temp">${Math.round(hourlyData[0].temp.value)}°</span>
-        <img src="app/icons/${hourlyData[0].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${hourlyData[0].weather_code.value}.svg" alt="${hourlyData[0].weather_code.value}">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(hourlyData[0].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="time">${showTime(hourlyData[1].observation_time.value)}</span>
         <span class="temp">${Math.round(hourlyData[1].temp.value)}°</span>
-        <img src="app/icons/${hourlyData[1].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${hourlyData[1].weather_code.value}.svg" alt="${hourlyData[1].weather_code.value}">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(hourlyData[1].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="time">${showTime(hourlyData[2].observation_time.value)}</span>
         <span class="temp">${Math.round(hourlyData[2].temp.value)}°</span>
-        <img src="app/icons/${hourlyData[2].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${hourlyData[2].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(hourlyData[2].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="time">${showTime(hourlyData[3].observation_time.value)}</span>
         <span class="temp">${Math.round(hourlyData[3].temp.value)}°</span>
-        <img src="app/icons/${hourlyData[3].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${hourlyData[3].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(hourlyData[3].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="time">${showTime(hourlyData[4].observation_time.value)}</span>
         <span class="temp">${Math.round(hourlyData[4].temp.value)}°</span>
-        <img src="app/icons/${hourlyData[4].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${hourlyData[4].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(hourlyData[4].precipitation_probability.value)}%</span>
       </div>
     </div>
@@ -186,35 +184,35 @@ const setDaily = (dailyData) => {
         <span class="now">Today</span>
         <span class="temp">${Math.round(dailyData[0].temp[1].max.value)}°</span>
         <span class="temp-min">${Math.round(dailyData[0].temp[0].min.value)}°</span>
-        <img src="app/icons/${dailyData[0].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${dailyData[0].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(dailyData[0].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="day">${showDate(dailyData[1].observation_time.value)}</span>
         <span class="temp">${Math.round(dailyData[1].temp[1].max.value)}°</span>
         <span class="temp-min">${Math.round(dailyData[1].temp[0].min.value)}°</span>
-        <img src="app/icons/${dailyData[1].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${dailyData[1].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(dailyData[1].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="day">${showDate(dailyData[2].observation_time.value)}</span>
         <span class="temp">${Math.round(dailyData[2].temp[1].max.value)}°</span>
         <span class="temp-min">${Math.round(dailyData[2].temp[0].min.value)}°</span>
-        <img src="app/icons/${dailyData[2].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${dailyData[2].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(dailyData[2].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="day">${showDate(dailyData[3].observation_time.value)}</span>
         <span class="temp">${Math.round(dailyData[3].temp[1].max.value)}°</span>
         <span class="temp-min">${Math.round(dailyData[3].temp[0].min.value)}°</span>
-        <img src="app/icons/${dailyData[3].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${dailyData[3].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(dailyData[3].precipitation_probability.value)}%</span>
       </div>
       <div class="common-data">
         <span class="day">${showDate(dailyData[4].observation_time.value)}</span>
         <span class="temp">${Math.round(dailyData[4].temp[1].max.value)}°</span>
         <span class="temp-min">${Math.round(dailyData[4].temp[0].min.value)}°</span>
-        <img src="app/icons/${dailyData[4].weather_code.value}.svg" width="50px" height="50px">
+        <img src="app/icons/${dailyData[4].weather_code.value}.svg" alt="">
         <span class="precp"><i class="fas fa-bolt"></i>${Math.round(dailyData[4].precipitation_probability.value)}%</span>
       </div>
     </div>
@@ -222,18 +220,6 @@ const setDaily = (dailyData) => {
 `;
 };
 
-const render = () => {
-  const label = document.querySelector('.search_label');
-  const feature = document.querySelector('.feature');
-  const button = document.querySelector('.btn');
-  const footer = document.querySelector('.foot');
-  button.remove();
-  feature.remove();
-  label.remove();
-  footer.style.borderTop = '2px solid #011b33';
-  setHeader();
-};
-
 export {
-  render, setCurrentTemp, setCurrentWeather, setHourly, setDaily, setAir,
+  setHeader, setCurrentTemp, setCurrentWeather, setAir, setHourly, setDaily,
 };

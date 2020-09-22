@@ -9,9 +9,8 @@
 </head>
 <body>
   <header class="header">
-    <h1 class="header_title"><a href="index.html" class="header_link">Weather Forecast</a></h1>
-    <div class="search">
-      <label for="search" class="search_label">Enter your Location</label>
+    <h1 class="header_title" id="header_title"><a href="index.html" class="header_link">Weather Forecast</a></h1>
+    <div class="search" id="search">
       <input type="text" class="search_input" id="search" placeholder="Enter a location e.g ikeja Lagos, Nigeria">
       <button class="btn btn1">Get Weather Forecast</button>
     </div>
@@ -21,18 +20,20 @@
     <div class="loader"></div>
   </div>
   <main class="main">
-    <div class="feature">
-      <div class="card">
-        <i class="fas fa-cloud-sun card_icon"></i>
-        <p>Detailed Weather Report</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-hourglass-end card_icon"></i>
-        <p>Realtime Hourly Data</p>
-      </div>
-      <div class="card">
-        <i class="far fa-clock card_icon"></i>
-        <p>Five Days Forecast</p>
+    <div class="wrapper">
+      <div class="feature">
+        <div class="card">
+          <i class="fas fa-cloud-sun card_icon"></i>
+          <p>Detailed Weather Report</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-hourglass-end card_icon"></i>
+          <p>Realtime Hourly Data</p>
+        </div>
+        <div class="card">
+          <i class="far fa-clock card_icon"></i>
+          <p>Five Days Forecast</p>
+        </div>
       </div>
     </div>
   </main>
@@ -46,7 +47,7 @@
     </div>
   </footer>
 
-  <script type="module" src="/app/js/weather.js" async></script>
+  <script type="module" src="/app/js/weather.js"></script>
   <script src="https://kit.fontawesome.com/8c64d9042a.js" crossorigin="anonymous"></script>
 </body>
 </html>

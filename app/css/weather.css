@@ -34,14 +34,11 @@ body {
   flex-basis: 80%;
   display: flex;
   flex-direction: row;
-}
-
-.query_input {
-  padding: 0.5rem;
-  font-family: inherit;
-  font-size: 1.4rem;
-  width: 80%;
-  border-radius: 5px 0 0 5px;
+  /* &_input {
+    @include input();
+    width: 80%;
+    border-radius: 5px 0 0 5px;
+  } */
 }
 
 .btn2 {
@@ -84,6 +81,11 @@ body {
 .currenttemp_description {
   text-align: center;
   margin: 1.5rem 2rem 0 0;
+}
+
+.currenttemp_description img {
+  width: 50px;
+  height: 50px;
 }
 
 .currentweather {
@@ -242,6 +244,12 @@ body {
   margin-right: 0.5rem;
 }
 
+.error {
+  height: 60vh;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
 /* homepage styling */
 .header_link {
   text-decoration: none;
@@ -272,6 +280,14 @@ body {
   border-radius: 5px;
 }
 
+.focus {
+  border: 2px solid red;
+}
+
+.focus :focus {
+  border: 2px solid red;
+}
+
 .btn1 {
   background-color: #011b33;
   color: #fff;
@@ -297,6 +313,10 @@ body {
   outline: 2px solid #011b33;
   background-color: #fff;
   color: #011b33;
+}
+
+.btn1:disabled {
+  background-color: #bdbdbd;
 }
 
 .main {
@@ -355,6 +375,49 @@ body {
 @keyframes rotate {
   to {
     transform: rotate(1turn);
+  }
+}
+
+dialog {
+  background-color: #fff;
+  color: #011b33;
+  border: none;
+  padding: 2rem;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 10px 10px 6px -6px #777;
+  max-width: 90vw;
+}
+
+dialog .close {
+  background-color: #011b33;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 15px;
+}
+
+dialog::backdrop {
+  background: linear-gradient(45deg, rgba(0, 143, 104, 0.5), rgba(250, 224, 66, 0.5));
+  backdrop-filter: blur(3px);
+}
+
+dialog[open] {
+  animation: slide 0.15s cubic-bezier(0, 1.8, 1, 1.8);
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateX(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
