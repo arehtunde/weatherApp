@@ -16,7 +16,7 @@ const setHeader = () => {
 
   // set input box
   const searchInput = document.querySelector('.search_input');
-  searchInput.style.width = '80%';
+  searchInput.style.width = '90%';
   searchInput.style.borderRadius = '5px 0 0 5px';
 
   // modifying button
@@ -32,6 +32,9 @@ const setHeader = () => {
 };
 
 const setCurrentTemp = (currentData, location) => {
+  const inputfield = document.querySelector('.search_input');
+  const input = inputfield.value.trim();
+
   // create card for current temp
   const currentTemp = document.createElement('div');
   currentTemp.classList.add('currenttemp');
@@ -45,19 +48,29 @@ const setCurrentTemp = (currentData, location) => {
     month: 'short',
     day: '2-digit',
   };
+
+  const time = {
+    hour: '2-digit',
+    minute: '2-digit',
+  };
+
   const showDate = date.toLocaleDateString([], options);
+  const showTime = date.toLocaleTimeString([], time);
 
   // set content
   currentTemp.innerHTML = `
-    <div class="currenttemp_detail">
-      <p class="date">${showDate}</p>
-      <p class="location"><i class="fas fa-map-marker-alt"></i><span class="value">${location.state}</span></p>
-      <p class="temp">${Math.round(currentData.temp.value)}°</p>
+    <div class="holder">
+      <div class="currenttemp_detail">
+        <p class="date">${showDate}</p>
+        <p>as of ${showTime}</p>
+        <p class="temp">${Math.round(currentData.temp.value)}°</p>
+      </div>
+      <div class="currenttemp_description">
+        <p class="descp">${currentData.weather_code.value}</p>
+        <img src="app/icons/${currentData.weather_code.value}.svg" alt="${currentData.weather_code.value}">
+      </div>
     </div>
-    <div class="currenttemp_description">
-      <p class="descp">${currentData.weather_code.value}</p>
-      <img src="app/icons/${currentData.weather_code.value}.svg" alt="${currentData.weather_code.value}">
-    </div>
+    <p class="location"><i class="fas fa-map-marker-alt"></i><span class="value">${input}, ${location.state}, ${location.country} Weather</span></p>
   `;
 };
 
@@ -87,6 +100,18 @@ const setCurrentWeather = (currentData, location) => {
   `;
 };
 
+const airVerdict = (verdict) => {
+  const verdicts = {
+    Good: 'No health implications',
+    Moderate: 'Some pollutants may slightly affect very few hypersensitive individuals',
+    'Unhealthy for sensitive groups': 'Healthy people may experience slight irritations and sensitive individuals will be slightly affected to a larger extent',
+    Unhealthy: 'Sensitive individuals will experience more serious conditions. The hearts and respiratory systems of healthy people may be affected',
+    'Very Unhealthy': 'Healthy people will commonly show symptoms. People with respiratory or heart diseases will be significantly affected and will experience reduced endurance in activities',
+    Hazardous: 'Healthy people will experience reduced endurance in activities and may also show noticeably strong symptoms. Other illnesses may be triggered in healthy people. Elders and the sick should remain indoors and avoid exercise. Healthy individuals should avoid outdoor activities',
+  };
+  return verdicts[verdict];
+};
+
 const setAir = (airData) => {
   // create card for air quality
   const air = document.createElement('div');
@@ -97,8 +122,8 @@ const setAir = (airData) => {
     <div class="air_detail">
       <div class="airvalue">${Math.round(airData.epa_aqi.value)}</div>
       <div class="airtext">
-        <h4 class="airtext_verdict">Good</h4>
-        <p class="airtext_expand">${airData.epa_health_concern.value}</p>
+        <h4 class="airtext_verdict">${airData.epa_health_concern.value}</h4>
+        <p class="airtext_expand">${airVerdict(airData.epa_health_concern.value)}</p>
       </div>
     </div>
     <button class="btn3 nextSee">See Details</button>

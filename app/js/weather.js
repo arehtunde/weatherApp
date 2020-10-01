@@ -88,10 +88,11 @@ const getData = async (coord, output) => {
     ]);
 
     setCurrentTemp(currentData, output);
+    setHourly(hourlyData);
     setCurrentWeather(currentData, output);
     setAir(airData);
-    setHourly(hourlyData);
     setDaily(dailyData);
+    console.log(currentData);
 
     load.style.display = 'none';
     loader.style.display = 'none';
@@ -100,7 +101,7 @@ const getData = async (coord, output) => {
     errorInfo.innerHTML = `<h3>Oops!</h3>
     <p>Fail to Fetch</p>
     <p>Please try again</p>`;
-    main.append(errorInfo);
+    wrapper.append(errorInfo);
   }
 };
 
@@ -122,6 +123,7 @@ const getCoord = async () => {
       // coordinates
       const coord = data.results[0].geometry;
       const output = data.results[0].components;
+
       setHeader(); // set header
       getData(coord, output);
     }
@@ -129,7 +131,7 @@ const getCoord = async () => {
     wrapper.innerHTML = '';
     errorInfo.innerHTML = `<h2>${input} Not Found!</h2>
     <p>Please Enter a valid city name</p>`;
-    main.append(errorInfo);
+    wrapper.append(errorInfo);
   }
 };
 

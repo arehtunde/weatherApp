@@ -22,8 +22,9 @@
 
 .query {
   margin: $space-4 $space-2;
-  flex-basis: 80%;
+  flex-basis: 70%;
   @include flex();
+  border: 1px solid red;
 
   /* &_input {
     @include input();
@@ -41,26 +42,39 @@
 }
 
 .currenttemp {
-  margin: $space-4 $space-2;
+  margin: $space-4 0;
   padding: $space-2;
-  @include flex();
+  // flex-wrap: wrap;
   font-weight: 550;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 10px 10px 6px -6px #777;
 
+  @media screen and (min-width: $laptop) {
+    grid-column: 1 / 4;
+  }
+
+  .holder {
+    @include flex();
+  }
+
   &_detail {
     margin-right: auto;
+    // flex: 1 0 70%;
   }
 }
 
-.location .value {
-  margin-left: $space-2;
+.location {
+  margin-block-start: 0;
+  .value {
+    margin-left: $space-2;
+    font-size: clamp(1.6rem, 2.6vw, 1.8rem);
+  }
 }
 
 .currenttemp_detail {
   .temp {
-    font-size: clamp(5rem, 4.6vw, 6rem);
+    font-size: clamp(6rem, 4.6vw, 8rem);
     font-weight: 600;
     line-height: 1.2;
   }
@@ -68,28 +82,40 @@
 
 .currenttemp_description {
   text-align: center;
-  margin: $space-3 $space-4 0 0;
+  margin: $space-4 $space-4 0 0;
+
+  @media screen and (min-width: $laptop) {
+    margin: 3rem 0 0 0;
+  }
+
+  .descp {
+    font-size: clamp(1.6rem, 2.6vw, 1.8rem);
+  }
 
   img {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
   }
 }
 
 .currentweather {
-  margin: $space-4 $space-2;
+  margin: $space-4 0;
   padding: $space-2;
   background-color: #fff;
   border-radius: 10px;
   font-weight: 550;
   box-shadow: 10px 10px 6px -6px #777;
+
+  @media screen and (min-width: $laptop) {
+    grid-column: 1 / -1;
+  }
 }
 
 .currentweather_detail {
   margin-bottom: $space-2;
 
   .feel {
-    font-size: clamp(4rem, 3.6vw, 5rem);;
+    font-size: clamp(4rem, 3.6vw, 5rem);
     margin: $space-2 0 0 $space-2;
     line-height: .9;
     font-weight: 450;
@@ -103,15 +129,28 @@
 .currentdata {
   list-style: none;
 
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }  
+
   &_list {
     display: flex;
     padding: $space-1 0;
     border-top: 1px solid #bdbdbd;
+
+    @media screen and (min-width: $tablet) {
+      flex-basis: 49%;
+      margin-right: 0%;
+    }
     
     .fas {
       line-height: 1.5;
-      flex-basis: 8%;
-      margin-left: $space-2;
+      flex-basis: 10%;
+      text-align: center;
+      //margin-left: $space-2;
+      margin-right: $space-2;
     }
   
     .prop {
@@ -121,11 +160,16 @@
 }
 
 .air {
-  margin: $space-4 $space-2;
+  margin: $space-4 0;
   padding: $space-2;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 10px 10px 6px -6px #777;
+
+  @media screen and (min-width: $laptop) {
+    grid-column: 4 / -1;
+    grid-row: 1;
+  }
 
   button {
     @include button();
@@ -146,24 +190,31 @@
   border-bottom-color: #080;
   margin-right: $space-4;
   height: 100px;
-  width: 100px;
+  width: 120px;
   border-radius: 50%;
   text-align: center;
   line-height: 100px;
-  font-size: 3.2rem;
   font-weight: 500;
+  flex-basis: 40%;
+  font-size: clamp(1.6rem, 2.6vw, 3rem);
 }
 
 .airtext {
-  margin-left: $space-4;
+  p {
+    font-size: 1.4rem;
+  }
 }
 
 .common {
-  margin: $space-4 $space-2;
+  margin: $space-4 0;
   padding: $space-2;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 10px 10px 6px -6px #777;
+
+  @media screen and (min-width: $laptop) {
+    grid-column: 1 / -1;
+  }
 
   &_holder {
     display: flex;
@@ -197,6 +248,8 @@
   flex-basis: 20%;
   border-right: 1px solid #bdbdbd;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 
   &:first-child {
     font-weight: 700;
@@ -210,13 +263,10 @@
     font-size: clamp(2.5rem, 2.6vw, 4rem);
   }
 
-  .now {
-    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
-  }
-
   img {
     width: 50px;
     height: 50px;
+    margin: 0 auto;
   }
   
   .fas {

@@ -18,7 +18,12 @@
 
 .search {
   text-align: center;
+  margin: 0 auto;
   padding: $space-4 $space-2;
+
+  @media screen and (min-width: $tablet)  {
+    width: Max(50vw, 500px);
+  }
 
   &_label {
     display: block;
@@ -27,7 +32,7 @@
 
   &_input {
     @include input();
-    width: 90%;
+    width: calc(70% + 80px);
     border-radius: 5px;
   }
 }
@@ -69,26 +74,64 @@
 
 .main {
   color: $bg-color;
+  margin: 0 auto;
+  // width: Min(100vw, calc(80% + 100px));
+}
+
+.wrapper {
+  padding: 0 1rem;
+  border: 2px solid red;
+
+  @media screen and (min-width: $laptop) {
+    width: Min(1000px, calc(70% + 100px));
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem 1rem;
+
+    > div {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .feature {
-  margin: 0 $space-2;
+  //margin: 0 $space-2;
   text-align: center;
   border-top: $bord;
   border-bottom: $bord;
+
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    justify-content: space-between;
+    width: Max(50vw, 500px);
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 728px) {
+    grid-column: 1 / -1;
+  }
 }
 
 .card {
   padding: $space-2;
 
+  p {
+    font-size: clamp(1.6rem, 2.6vw, 1.8rem);
+  }
+
   .card_icon {
     font-size: 5rem;
     margin: $space-1;
+
+    @media screen and (min-width: $tablet) {
+      font-size: clamp(5rem, 6.8vw, 8rem);
+    }
   }
 }
 
 .foot {
-
   color: $bg-color;
   text-align: center;
 
