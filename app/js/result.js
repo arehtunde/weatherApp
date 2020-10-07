@@ -1,3 +1,5 @@
+import { airPage, airVerdict } from './air.js';
+
 const wrapper = document.querySelector('.wrapper');
 
 const setHeader = () => {
@@ -87,32 +89,56 @@ const setCurrentWeather = (currentData, location) => {
     </div>
     <div class="currentweather_data">
       <ul class="currentdata">
-        <li class="currentdata_list"><i class="fas fa-tint"></i><span class="prop">Dew Point</span><span class="value">${Math.round(currentData.dewpoint.value)}°</span></li>
-        <li class="currentdata_list"><i class="fas fa-tint"></i><span class="prop">Humidity</span><span class="value">${Math.round(currentData.humidity.value)}%</span></li>
-        <li class="currentdata_list"><i class="fas fa-compress-arrows-alt"></i><span class="prop">Pressure</span><span class="value">${Math.round(currentData.baro_pressure.value)}</span><span>hPa</span></li>
-        <li class="currentdata_list"><i class="fas fa-eye"></i><span class="prop">Visibility</span><span class="value">${Math.round(currentData.visibility.value)}</span><span>km</span></li>
-        <li class="currentdata_list"><i class="fas fa-wind"></i><span class="prop">Wind</span><span class="value">${Math.round(currentData.wind_speed.value)}</span><span>m/s</span></li>
-        <li class="currentdata_list"><i class="fas fa-cloud"></i><span class="prop">Cloud Cover</span><span class="value">${Math.round(currentData.cloud_cover.value)}%</span></li>
-        <li class="currentdata_list"><i class="fas fa-bolt"></i><span class="prop">Precipitation</span><span class="value">${Math.round(currentData.precipitation.value)}</span><span>mm/hr</span></li>
-        <li class="currentdata_list"><i class="fas fa-moon"></i><span class="prop">Moon Phase</span><span class="value">${currentData.moon_phase.value}</span></li>
+        <li class="currentdata_list">
+          <i class="fas fa-tint"></i>
+          <span class="prop">Dew Point</span>
+          <span class="value">${Math.round(currentData.dewpoint.value)}°</span>
+        </li>
+        <li class="currentdata_list">
+          <i class="fas fa-tint"></i>
+          <span class="prop">Humidity</span>
+          <span class="value">${Math.round(currentData.humidity.value)}%</span>
+        </li>
+        <li class="currentdata_list">
+          <i class="fas fa-compress-arrows-alt"></i>
+          <span class="prop">Pressure</span>
+          <span class="value">${Math.round(currentData.baro_pressure.value)}</span>
+          <span>hPa</span>
+        </li>
+        <li class="currentdata_list">
+          <i class="fas fa-eye"></i>
+          <span class="prop">Visibility</span>
+          <span class="value">${Math.round(currentData.visibility.value)}</span>
+          <span>km</span>
+        </li>
+        <li class="currentdata_list">
+          <i class="fas fa-wind"></i>
+          <span class="prop">Wind</span>
+          <span class="value">${Math.round(currentData.wind_speed.value)}</span>
+          <span>m/s</span>
+        </li>
+        <li class="currentdata_list">
+          <i class="fas fa-cloud"></i>
+          <span class="prop">Cloud Cover</span>
+          <span class="value">${Math.round(currentData.cloud_cover.value)}%</span>
+        </li>
+        <li class="currentdata_list">
+          <i class="fas fa-bolt"></i>
+          <span class="prop">Precipitation</span>
+          <span class="value">${Math.round(currentData.precipitation.value)}</span>
+          <span>mm/hr</span>
+        </li>
+        <li class="currentdata_list">
+          <i class="fas fa-moon"></i>
+          <span class="prop">Moon Phase</span>
+          <span class="value">${currentData.moon_phase.value}</span>
+        </li>
       </ul>
     </div>
   `;
 };
 
-const airVerdict = (verdict) => {
-  const verdicts = {
-    Good: 'No health implications',
-    Moderate: 'Some pollutants may slightly affect very few hypersensitive individuals',
-    'Unhealthy for sensitive groups': 'Healthy people may experience slight irritations and sensitive individuals will be slightly affected to a larger extent',
-    Unhealthy: 'Sensitive individuals will experience more serious conditions. The hearts and respiratory systems of healthy people may be affected',
-    'Very Unhealthy': 'Healthy people will commonly show symptoms. People with respiratory or heart diseases will be significantly affected and will experience reduced endurance in activities',
-    Hazardous: 'Healthy people will experience reduced endurance in activities and may also show noticeably strong symptoms. Other illnesses may be triggered in healthy people. Elders and the sick should remain indoors and avoid exercise. Healthy individuals should avoid outdoor activities',
-  };
-  return verdicts[verdict];
-};
-
-const setAir = (airData) => {
+const setAir = (currentData) => {
   // create card for air quality
   const air = document.createElement('div');
   air.classList.add('air');
@@ -120,14 +146,20 @@ const setAir = (airData) => {
   air.innerHTML = `
     <h3 class="air_title">Air Quality Index</h3>
     <div class="air_detail">
-      <div class="airvalue">${Math.round(airData.epa_aqi.value)}</div>
+      <div class="airvalue">${Math.round(currentData.epa_aqi.value)}</div>
       <div class="airtext">
-        <h4 class="airtext_verdict">${airData.epa_health_concern.value}</h4>
-        <p class="airtext_expand">${airVerdict(airData.epa_health_concern.value)}</p>
+        <h4 class="airtext_verdict">${currentData.epa_health_concern.value}</h4>
+        <p class="airtext_expand">${airVerdict(currentData.epa_health_concern.value)}</p>
       </div>
     </div>
     <button class="btn3 nextSee">See Details</button>
   `;
+
+  // airPage
+  const airButton = document.querySelector('.nextSee');
+  airButton.addEventListener('click', () => {
+    airPage(currentData);
+  });
 };
 
 const setHourly = (hourlyData) => {

@@ -1,3 +1,4 @@
+import { airPage } from './air.js';
 import {
   setHeader, setCurrentTemp, setCurrentWeather, setAir, setHourly, setDaily,
 } from './result.js';
@@ -55,13 +56,8 @@ const getData = async (coord, output) => {
 
   // current weather search params
   const key = 'vK6swCrrskXqnuZGn4NT7q7Aj1YuZINH';
-  const base = 'https://api.climacell.co/v3/weather/realtime?';
-  const fields = ['precipitation', 'precipitation_type', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'dewpoint', 'visibility', 'moon_phase', 'cloud_cover', 'wind_direction', 'wind_speed', 'weather_code'];
-  const currentUrl = `${base}lat=${coord.lat}&lon=${coord.lng}&fields=${fields}&apikey=${key}`;
-
-  // air quality search params
-  const airFields = ['pm25', 'pm10', 'o3', 'no2', 'co', 'so2', 'epa_aqi', 'epa_health_concern', 'epa_primary_pollutant'];
-  const airUrl = `${base}lat=${coord.lat}&lon=${coord.lng}&fields=${airFields}&apikey=${key}`;
+  const fields = ['precipitation', 'precipitation_type', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'dewpoint', 'visibility', 'moon_phase', 'cloud_cover', 'wind_direction', 'wind_speed', 'weather_code', 'epa_aqi', 'epa_health_concern', 'pm25', 'pm10', 'o3', 'no2', 'co', 'so2'];
+  const currentUrl = `https://api.climacell.co/v3/weather/realtime?lat=${coord.lat}&lon=${coord.lng}&fields=${fields}&apikey=${key}`;
 
   // hourly weather search params
   const hourlyFields = ['precipitation_probability', 'temp', 'feels_like', 'baro_pressure', 'humidity', 'wind_speed', 'wind_direction', 'weather_code'];
@@ -78,19 +74,18 @@ const getData = async (coord, output) => {
   const dailyUrl = `https://api.climacell.co/v3/weather/forecast/daily?lat=${coord.lat}&lon=${coord.lng}&start_time=now&end_time=${endDate.toISOString()}&fields=${dailyFields}&apikey=${key}`;
 
   try {
-    // fetch data
-    const [currentResponse, airResponse, hourlyResponse, dailyResponse] = await Promise.all([
-      fetch(currentUrl), fetch(airUrl), fetch(hourlyUrl), fetch(dailyUrl),
+    const [currentResponse, hourlyResponse, dailyResponse] = await Promise.all([
+      fetch(currentUrl), fetch(hourlyUrl), fetch(dailyUrl),
     ]);
 
-    const [currentData, airData, hourlyData, dailyData] = await Promise.all([
-      currentResponse.json(), airResponse.json(), hourlyResponse.json(), dailyResponse.json(),
+    const [currentData, hourlyData, dailyData] = await Promise.all([
+      currentResponse.json(), hourlyResponse.json(), dailyResponse.json(),
     ]);
 
     setCurrentTemp(currentData, output);
     setHourly(hourlyData);
     setCurrentWeather(currentData, output);
-    setAir(airData);
+    setAir(currentData);
     setDaily(dailyData);
     console.log(currentData);
 
